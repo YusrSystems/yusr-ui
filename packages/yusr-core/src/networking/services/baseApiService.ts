@@ -1,9 +1,10 @@
-import ApiConstants from "./apiConstants";
-import BaseFilterableApiService from "./baseFilterableApiService";
-import type { RequestResult } from "./requestResult";
-import YusrApiHelper from "./yusrApiHelper";
+import type { BaseEntity } from "../../entities/baseEntity";
+import type { RequestResult } from "../../types/requestResult";
+import { ApiConstants } from "../constants/apiConstants";
+import { BaseFilterableApiService } from "./baseFilterableApiService";
+import { YusrApiHelper } from "./yusrApiHelper";
 
-export default abstract class BaseApiService<T> extends BaseFilterableApiService<T>
+export abstract class BaseApiService<T extends BaseEntity> extends BaseFilterableApiService<T>
 {
   async Get(id: number): Promise<RequestResult<T>>
   {

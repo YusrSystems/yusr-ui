@@ -1,5 +1,5 @@
 {
-  "name": "yusr-core",
+  "name": "@yusr/core",
   "private": true,
   "version": "1.0.0",
   "type": "module",
