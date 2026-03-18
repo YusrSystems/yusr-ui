@@ -16,6 +16,10 @@ export interface IBaseEntityPageActions<T extends BaseEntity>
   setCurrentPage: (page: number) => UnknownAction;
 }
 
+/**
+ * @interface IBaseEntityPage Generic interface must be inherit by entites that needs CRUDS page
+ * @template T The type and it must be BaseEntity
+ */
 export default interface IBaseEntityPage<T extends BaseEntity>{
   entityState: IEntityState<T>;
   useSlice: () => IDialogState<T>;
@@ -24,11 +28,11 @@ export default interface IBaseEntityPage<T extends BaseEntity>{
   entityName: string;
   title: string;
   addNewItemTitle: string;
-//   cards: CardProps[];
   columnsToFilter: ColumnName[];
   service: BaseApiService<T>;
+//   cards: CardProps[];
 //   tableHeadRows: TableHeadRow[];
 //   tableRowMapper: (entity: T) => TableBodyRowInfo[];
-    // TODO: complete after adding the required components
+//   TODO: complete after adding the required components
   ChangeDialog: React.ReactNode;
 };
