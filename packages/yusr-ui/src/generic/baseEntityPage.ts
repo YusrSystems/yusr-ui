@@ -4,6 +4,9 @@ import type { BaseApiService } from "../../../yusr-core/src/networking";
 import type { FilterResult, ColumnName } from "../../../yusr-core/src/types";
 import type { IDialogState } from "../state/interfaces/iDialogState";
 import type IEntityState from "../state/interfaces/iEntityState";
+import type { TableBodyRowInfo } from "../components/custom/table/tableBodyRow";
+import type { TableHeadRow } from "../components/custom/table/tableHeaderRows";
+import type { CardProps } from "../components/custom/table/tableCard";
 
 export interface IBaseEntityPageActions<T extends BaseEntity>
 {
@@ -30,9 +33,8 @@ export default interface IBaseEntityPage<T extends BaseEntity>{
   addNewItemTitle: string;
   columnsToFilter: ColumnName[];
   service: BaseApiService<T>;
-//   cards: CardProps[];
-//   tableHeadRows: TableHeadRow[];
-//   tableRowMapper: (entity: T) => TableBodyRowInfo[];
-//   TODO: complete after adding the required components
+  cards: CardProps[];
+  tableHeadRows: TableHeadRow[];
+  tableRowMapper: (entity: T) => TableBodyRowInfo[];
   ChangeDialog: React.ReactNode;
 };
