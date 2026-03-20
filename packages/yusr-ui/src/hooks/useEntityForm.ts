@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import type { ValidationRule } from "../../../yusr-core/src/validation/validationRule";
+import type { ValidationRule } from "@yusr_systems/core/src/validation/validationRule";
 import { useFormValidation } from "./useFormValidation";
 
 export function useEntityForm<T>(initialData: Partial<T> | undefined, rules: ValidationRule<Partial<T>>[])

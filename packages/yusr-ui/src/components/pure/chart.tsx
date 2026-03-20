@@ -46,7 +46,7 @@ function ChartContainer(
         data-slot="chart"
         data-chart={ chartId }
         className={ cn(
-          "[&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border flex aspect-video justify-center text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-sector]:outline-hidden [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-hidden",
+          "[&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border[&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border[&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border flex aspect-video justify-center text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent[&_.recharts-layer]:outline-hidden [&_.recharts-sector]:outline-hidden [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-hidden",
           className
         ) }
         { ...props }
@@ -109,6 +109,8 @@ function ChartTooltipContent(
     indicator?: "line" | "dot" | "dashed";
     nameKey?: string;
     labelKey?: string;
+    payload?: any[];
+    label?: any;
   }
 )
 {
@@ -139,7 +141,7 @@ function ChartTooltipContent(
     }
 
     return <div className={ cn("font-medium", labelClassName) }>{ value }</div>;
-  }, [label, labelFormatter, payload, hideLabel, labelClassName, config, labelKey]);
+  },[label, labelFormatter, payload, hideLabel, labelClassName, config, labelKey]);
 
   if (!active || !payload?.length)
   {
@@ -157,7 +159,7 @@ function ChartTooltipContent(
     >
       { !nestLabel ? tooltipLabel : null }
       <div className="grid gap-1.5">
-        { payload.filter((item) => item.type !== "none").map((item, index) =>
+        { payload.filter((item: any) => item.type !== "none").map((item: any, index: number) =>
         {
           const key = `${nameKey || item.name || item.dataKey || "value"}`;
           const itemConfig = getPayloadConfigFromPayload(config, item, key);
@@ -222,7 +224,7 @@ const ChartLegend = RechartsPrimitive.Legend;
 function ChartLegendContent(
   { className, hideIcon = false, payload, verticalAlign = "bottom", nameKey }:
     & React.ComponentProps<"div">
-    & Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign">
+    & { payload?: any[]; verticalAlign?: "top" | "bottom" | "middle"; }
     & { hideIcon?: boolean; nameKey?: string; }
 )
 {
@@ -237,7 +239,7 @@ function ChartLegendContent(
     <div
       className={ cn("flex items-center justify-center gap-4", verticalAlign === "top" ? "pb-3" : "pt-3", className) }
     >
-      { payload.filter((item) => item.type !== "none").map((item) =>
+      { payload.filter((item: any) => item.type !== "none").map((item: any) =>
       {
         const key = `${nameKey || item.dataKey || "value"}`;
         const itemConfig = getPayloadConfigFromPayload(config, item, key);

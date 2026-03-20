@@ -1,6 +1,6 @@
 import { Download, FileText, Maximize2, UploadCloud, X } from "lucide-react";
 import React, { useCallback, useMemo } from "react";
-import type { StorageFile } from "../../../../../yusr-core/src/entities";
+import type { StorageFile } from "@yusr_systems/core/src/entities";
 import { cn } from "../../../utils/cn";
 import { Button } from "../../pure/button";
 import { Card, CardContent } from "../../pure/card";

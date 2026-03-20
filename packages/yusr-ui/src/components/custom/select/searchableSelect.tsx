@@ -4,7 +4,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "../../pure/popover";
 import { Check, ChevronsUpDown } from "lucide-react";
 import * as React from "react";
 import SearchInput from "../input/searchInput";
-import type { ColumnName } from "../../../../../yusr-core/src/types";
+import type { ColumnName } from "@yusr_systems/core/src/types";
 import { cn } from "../../../utils/cn";
 
 type SearchableSelectParams<T> = {

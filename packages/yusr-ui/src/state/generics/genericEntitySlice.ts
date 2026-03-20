@@ -1,9 +1,9 @@
 import { type CaseReducerActions, createAsyncThunk, createSlice, type PayloadAction, type SliceCaseReducers } from "@reduxjs/toolkit";
 import { castDraft } from "immer";
 import type IEntityState from "../interfaces/iEntityState";
-import type { BaseEntity, FilterCondition } from "../../../../yusr-core/src/entities";
-import type { FilterResult, RequestResult } from "../../../../yusr-core/src/types";
-import type { BaseFilterableApiService } from "../../../../yusr-core/src/networking";
+import type { BaseEntity, FilterCondition } from "@yusr_systems/core/src/entities";
+import type { FilterResult, RequestResult } from "@yusr_systems/core/src/types";
+import type { BaseFilterableApiService } from "@yusr_systems/core/src/networking";
 
 type FilterMethodType<T> = (
   pageNumber: number,

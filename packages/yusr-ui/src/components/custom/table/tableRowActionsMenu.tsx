@@ -2,7 +2,7 @@ import { Button } from "../../pure/button";
 import { ContextMenuContent, ContextMenuGroup, ContextMenuItem, ContextMenuLabel, ContextMenuSeparator } from "../../pure/context-menu";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../../pure/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
-import type { ResourcePermissions } from "../../../../../yusr-core/src/auth/permissionSelector";
+import type { ResourcePermissions } from "@yusr_systems/core/src/auth/permissionSelector";
 
 type ListType = "dropdown" | "context";
 

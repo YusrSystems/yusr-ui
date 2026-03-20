@@ -1,5 +1,5 @@
-import type { InternalDispatch } from "../../../yusr-ui/src/state/factory";
-import { AuthConstants } from "./authConstants";
+import { AuthConstants } from "@yusr_systems/core/src/auth/authConstants";
+import type { InternalDispatch } from "./factory";
 
 interface AuthActions 
 {

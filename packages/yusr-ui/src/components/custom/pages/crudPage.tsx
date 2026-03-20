@@ -1,10 +1,10 @@
 import type { ActionCreatorWithPayload, AsyncThunk, UnknownAction } from "@reduxjs/toolkit";
 import type { PropsWithChildren } from "react";
 import { useEffect } from "react";
-import type { ResourcePermissions } from "../../../../../yusr-core/src/auth/permissionSelector";
-import type { BaseEntity, FilterCondition } from "../../../../../yusr-core/src/entities";
-import type { BaseApiService } from "../../../../../yusr-core/src/networking";
-import type { ColumnName, FilterResult } from "../../../../../yusr-core/src/types";
+import type { ResourcePermissions } from "@yusr_systems/core/src/auth/permissionSelector";
+import type { BaseEntity, FilterCondition } from "@yusr_systems/core/src/entities";
+import type { BaseApiService } from "@yusr_systems/core/src/networking";
+import type { ColumnName, FilterResult } from "@yusr_systems/core/src/types";
 import { useYusrDispatch } from "../../../state/hooks";
 import type { IDialogState } from "../../../state/interfaces/iDialogState";
 import type IEntityState from "../../../state/interfaces/iEntityState";

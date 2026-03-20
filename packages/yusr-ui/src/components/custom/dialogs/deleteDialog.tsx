@@ -1,7 +1,7 @@
 import { Loader2, OctagonAlert } from "lucide-react";
 import { useState } from "react";
-import type { BaseEntity } from "../../../../../yusr-core/src/entities";
-import type { BaseApiService } from "../../../../../yusr-core/src/networking";
+import type { BaseEntity } from "@yusr_systems/core/src/entities";
+import type { BaseApiService } from "@yusr_systems/core/src/networking";
 import { Button } from "../../pure/button";
 import { DialogClose, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "../../pure/dialog";
 import { Separator } from "../../pure/separator";

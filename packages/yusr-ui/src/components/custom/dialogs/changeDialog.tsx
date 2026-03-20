@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import type { BaseEntity } from "../../../../../yusr-core/src/entities";
+import type { BaseEntity } from "@yusr_systems/core/src/entities";
 import { cn } from "../../../utils/cn";
 import { Button } from "../../pure/button";
 import { DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "../../pure/dialog";

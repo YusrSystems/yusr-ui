@@ -1,5 +1,5 @@
 {
-  "name": "yusr-ui",
+  "name": "@yusr_systems/yusr-ui",
   "version": "1.0.0",
   "description": "",
   "private": false,
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/YusrSystems/yusr-ui#readme",
   "devDependencies": {
+    "@changesets/cli": "^2.30.0",
     "@types/node": "^25.5.0",
     "vite-plugin-dts": "^4.5.4"
   },

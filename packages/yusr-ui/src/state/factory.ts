@@ -1,7 +1,7 @@
 import type { ReducersMapObject } from "@reduxjs/toolkit";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { setupAuthListeners } from "../../../yusr-core/src/auth/authListener";
-import { createAuthSlice } from "../../../yusr-core/src/auth/authSlice";
+import { createAuthSlice } from "@yusr_systems/core/src/auth/authSlice";
+import { setupAuthListeners } from "./authListener";
 
 export const createInternalStore = <TUser extends object, TSetting extends object>(externalReducers: ReducersMapObject = {}) => 
 {

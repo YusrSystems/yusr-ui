@@ -1,6 +1,10 @@
 {
-  "name": "@yusr/ui",
-  "version": "1.0.0",
+  "name": "@yusr_systems/ui",
+  "version": "2.0.3",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "private": false,
   "type": "module",
   "main": "./dist/yusr-ui.umd.cjs",
@@ -11,10 +15,12 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/yusr-ui.js",
       "require": "./dist/yusr-ui.umd.cjs"
-    }
+    },
+    "./theme.css": "./src/styles/theme.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "src/styles/theme.css"
   ],
   "scripts": {
     "dev": "vite",
@@ -24,7 +30,8 @@
   },
   "peerDependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^3.0.0 || ^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^24.12.0",

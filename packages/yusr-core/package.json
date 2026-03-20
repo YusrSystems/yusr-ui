@@ -1,7 +1,17 @@
 {
-  "name": "@yusr/core",
-  "private": true,
-  "version": "1.0.0",
+  "name": "@yusr_systems/core",
+  "version": "2.0.3",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/yusr-core.umd.cjs",
+  "module": "./dist/yusr-core.js",
+  "types": "./dist/index.d.ts",
+  "private": false,
   "type": "module",
   "scripts": {
     "dev": "vite",
