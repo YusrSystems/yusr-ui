@@ -1,7 +1,7 @@
 "use client";
 
 import { LoaderPinwheelIcon, RefreshCwOff, Table } from "lucide-react";
-import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyContent } from "../../empty";
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "../status/empty";
 type EmptyTableMode = "empty" | "loading" | "error";
 
 type EmptyTablePreviewProps = { mode: EmptyTableMode; };
