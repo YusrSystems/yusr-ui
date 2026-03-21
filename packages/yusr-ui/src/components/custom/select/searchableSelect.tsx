@@ -1,11 +1,11 @@
+import type { ColumnName } from "@yusr_systems/core";
+import { Check, ChevronsUpDown } from "lucide-react";
+import * as React from "react";
+import { cn } from "../../../utils/cn";
 import { Button } from "../../pure/button";
 import { Command, CommandEmpty, CommandGroup, CommandItem, CommandList } from "../../pure/command";
 import { Popover, PopoverContent, PopoverTrigger } from "../../pure/popover";
-import { Check, ChevronsUpDown } from "lucide-react";
-import * as React from "react";
-import SearchInput from "../input/searchInput";
-import type { ColumnName } from "@yusr_systems/core/src/types";
-import { cn } from "../../../utils/cn";
+import { SearchInput } from "../inputs/searchInput";
 
 type SearchableSelectParams<T> = {
   items: T[];
@@ -20,7 +20,7 @@ type SearchableSelectParams<T> = {
   onSearch: (condition: { value: string; columnName: string; } | undefined) => void;
 };
 
-export default function SearchableSelect<T>(
+export function SearchableSelect<T>(
   {
     items,
     itemLabelKey,

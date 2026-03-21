@@ -1,4 +1,4 @@
-import { DateInput, type DateInputProps } from "../input/dateInput";
+import { DateInput, type DateInputProps } from "../inputs/dateInput";
 import { FormField } from "./formField";
 
 interface DateFieldProps extends DateInputProps

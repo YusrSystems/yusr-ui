@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 export type CardProps = { title: string; data: string; icon: ReactNode; };
 
-export default function TableCard({ cards }: { cards: CardProps[]; })
+export function CrudTableCard({ cards }: { cards: CardProps[]; })
 {
   return (
     <div className="mb-5 grid grid-cols-1 sm:grid-cols-2 gap-5">

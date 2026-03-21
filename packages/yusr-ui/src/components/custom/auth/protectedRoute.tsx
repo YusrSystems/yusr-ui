@@ -1,17 +1,17 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { useYusrSelector } from "../../../state/hooks";
 
-const ProtectedRoute = () =>
+interface ProtectedRouteProps {
+  isAuthenticated: boolean;
+  loginPath?: string;
+}
+
+export function ProtectedRoute({ isAuthenticated, loginPath = "/login" }: ProtectedRouteProps) 
 {
   const location = useLocation();
-  const isAuthenticated = useYusrSelector((state) => state.auth.isAuthenticated);
 
-  if (!isAuthenticated)
-  {
-    return <Navigate to="/login" state={ { from: location } } replace />;
+  if (!isAuthenticated) {
+    return <Navigate to={loginPath} state={{ from: location }} replace />;
   }
 
   return <Outlet />;
-};
-
-export default ProtectedRoute;
+}

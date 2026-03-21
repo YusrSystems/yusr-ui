@@ -1,5 +1,5 @@
-import { AuthConstants } from "@yusr_systems/core/src/auth/authConstants";
-import type { InternalDispatch } from "./factory";
+import type { Dispatch, UnknownAction } from "@reduxjs/toolkit";
+import { AuthConstants } from "@yusr_systems/core";
 
 interface AuthActions 
 {
@@ -7,7 +7,7 @@ interface AuthActions
   syncFromStorage: () => any;
 }
 
-export const setupAuthListeners = (dispatch: InternalDispatch, actions: AuthActions) =>
+export const setupAuthListeners = (dispatch: Dispatch<UnknownAction>, actions: AuthActions) =>
 {
   window.addEventListener("storage", (e) =>
   {

@@ -1,6 +1,6 @@
 import { Loader2 } from "lucide-react";
 
-export default function Loading({ entityName }: { entityName: string; })
+export function Loading({ entityName }: { entityName: string; })
 {
   return (
     <div className="sm:max-w-xl flex flex-col items-center justify-center py-20">

@@ -4,7 +4,7 @@ import { PlusIcon } from "lucide-react";
 import React from "react";
 import { type ReactElement, type ReactNode, useState } from "react";
 
-export default function TableHeader(
+export function CrudTableHeader(
   { title, buttonTitle, createComp, isButtonVisible = true }: {
     title: string;
     buttonTitle: string;

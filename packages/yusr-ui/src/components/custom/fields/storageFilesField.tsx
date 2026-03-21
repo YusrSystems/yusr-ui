@@ -1,6 +1,6 @@
 import { Download, FileText, Maximize2, UploadCloud, X } from "lucide-react";
 import React, { useCallback, useMemo } from "react";
-import type { StorageFile } from "@yusr_systems/core/src/entities";
+import type { StorageFile } from "@yusr_systems/core";
 import { cn } from "../../../utils/cn";
 import { Button } from "../../pure/button";
 import { Card, CardContent } from "../../pure/card";
@@ -29,7 +29,7 @@ export function isPDF(file?: StorageFile): boolean
   return file?.contentType === "application/pdf" || file?.extension?.toLowerCase() === ".pdf";
 }
 
-export default function StorageFileField(
+export function StorageFileField(
   {
     label,
     file,

@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-export default function useLightBox()
+export function useLightBox()
 {
   const [lightbox, setLightbox] = useState<{ srcLight: string; srcDark: string; alt: string; } | null>(null);
 

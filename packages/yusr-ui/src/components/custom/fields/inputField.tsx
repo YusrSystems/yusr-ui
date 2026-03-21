@@ -1,4 +1,4 @@
-import { BaseInput, type BaseInputProps } from "../input/baseInput";
+import { BaseInput, type BaseInputProps } from "../inputs/baseInput";
 import { FormField } from "./formField";
 
 export interface InputFieldProps extends BaseInputProps

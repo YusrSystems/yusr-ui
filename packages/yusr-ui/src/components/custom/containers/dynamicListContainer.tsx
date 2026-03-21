@@ -13,7 +13,7 @@ interface DynamicListProps<T>
   children: (item: any, index: number) => React.ReactNode;
 }
 
-export default function DynamicListContainer<T>(
+export function DynamicListContainer<T>(
   { title, items, onAdd, addLabel, emptyMessage, error, headers, children }: DynamicListProps<T>
 )
 {

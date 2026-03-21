@@ -1,10 +1,10 @@
+import type { BaseEntity } from "@yusr_systems/core";
 import type { PropsWithChildren } from "react";
-import type { BaseEntity } from "@yusr_systems/core/src/entities";
 import { cn } from "../../../utils/cn";
 import { Button } from "../../pure/button";
 import { DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "../../pure/dialog";
 import { Separator } from "../../pure/separator";
-import SaveButton, { type SaveButtonProps } from "../buttons/saveButton";
+import { SaveButton, type SaveButtonProps } from "../buttons/saveButton";
 
 export interface ChangeDialogProps<T extends BaseEntity> extends SaveButtonProps<T>, PropsWithChildren
 {
@@ -13,7 +13,7 @@ export interface ChangeDialogProps<T extends BaseEntity> extends SaveButtonProps
   className?: string;
 }
 
-export default function ChangeDialog<T extends BaseEntity>(
+export function ChangeDialog<T extends BaseEntity>(
   {
     title,
     description = "",

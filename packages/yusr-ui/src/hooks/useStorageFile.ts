@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import { StorageFile, StorageFileStatus } from "@yusr_systems/core/src/entities";
+import { StorageFile, StorageFileStatus } from "@yusr_systems/core";
 
-export default function useStorageFile<T>(setFormData: React.Dispatch<React.SetStateAction<T>>, fieldName: keyof T)
+export function useStorageFile<T>(setFormData: React.Dispatch<React.SetStateAction<T>>, fieldName: keyof T)
 {
   const fileInputRef = useRef<HTMLInputElement>(null);
 

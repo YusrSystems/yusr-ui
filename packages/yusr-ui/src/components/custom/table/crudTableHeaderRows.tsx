@@ -1,8 +1,8 @@
 import { TableHead, TableHeader, TableRow } from "../../pure/table";
 
-export type TableHeadRow = { rowName: string; rowStyles: string; };
+export type CrudTableHeadRow = { rowName: string; rowStyles: string; };
 
-export default function TableHeaderRows({ tableHeadRows }: { tableHeadRows: TableHeadRow[]; })
+export function CrudTableHeaderRows({ tableHeadRows }: { tableHeadRows: CrudTableHeadRow[]; })
 {
   return (
     <TableHeader className="bg-muted">

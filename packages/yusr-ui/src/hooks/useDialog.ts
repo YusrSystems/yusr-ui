@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function useDialog<T>()
+export function useDialog<T>()
 {
   const [selectedRow, setSelectedRow] = useState<T | null>(null);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);

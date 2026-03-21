@@ -11,7 +11,7 @@ interface GenericRowProps
   contextMenuContent: ReactNode;
 }
 
-export default function TableBodyRow({ tableRows, dropdownMenu, contextMenuContent }: GenericRowProps)
+export function CrudTableBodyRow({ tableRows, dropdownMenu, contextMenuContent }: GenericRowProps)
 {
   return (
     <>

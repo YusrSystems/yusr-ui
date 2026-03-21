@@ -1,4 +1,4 @@
-import { SelectInput, type SelectInputProps } from "../input/selectInput";
+import { SelectInput, type SelectInputProps } from "../inputs/selectInput";
 import { FormField } from "./formField";
 
 export function SelectField(

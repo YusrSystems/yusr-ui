@@ -1,7 +1,7 @@
 import { Search } from "lucide-react";
 import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
-import type { ColumnName } from "@yusr_systems/core/src/types";
+import type { ColumnName } from "@yusr_systems/core";
 import { Input } from "../../pure/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../pure/select";
 
@@ -10,7 +10,7 @@ type SearchInputParams = {
   onSearch: (condition: { value: string; columnName: string; } | undefined) => void;
 };
 
-export default function SearchInput({ columnsNames, onSearch }: SearchInputParams)
+export function SearchInput({ columnsNames, onSearch }: SearchInputParams)
 {
   const [searchValue, setSearchValue] = useState("");
   const [selectedColumn, setSelectedColumn] = useState<string>(columnsNames[0]?.value || "");

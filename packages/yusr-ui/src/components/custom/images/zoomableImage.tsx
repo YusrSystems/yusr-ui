@@ -10,7 +10,7 @@ interface ZoomableImageProps
   onOpen: (srcLight: string, srcDark: string, alt: string) => void;
 }
 
-export default function ZoomableImage(
+export function ZoomableImage(
   { srcLight, srcDark, alt, className, wrapperClassName, onOpen }: ZoomableImageProps
 )
 {

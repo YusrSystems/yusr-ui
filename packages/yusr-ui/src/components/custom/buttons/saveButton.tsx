@@ -1,7 +1,7 @@
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
-import type { BaseEntity } from "@yusr_systems/core/src/entities";
-import type { BaseApiService } from "@yusr_systems/core/src/networking";
+import type { BaseEntity } from "@yusr_systems/core";
+import type { BaseApiService } from "@yusr_systems/core";
 import { Button } from "../../pure/button";
 import type { DialogMode } from "../dialogs/dialogType";
 
@@ -15,7 +15,7 @@ export interface SaveButtonProps<T extends BaseEntity>
   validate?: () => boolean;
 }
 
-export default function SaveButton<T extends BaseEntity>(
+export function SaveButton<T extends BaseEntity>(
   { formData, dialogMode, service, disable, onSuccess, validate = () => true }: SaveButtonProps<T>
 )
 {

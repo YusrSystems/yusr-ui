@@ -1,9 +1,7 @@
 import { type CaseReducerActions, createAsyncThunk, createSlice, type PayloadAction, type SliceCaseReducers } from "@reduxjs/toolkit";
+import type { BaseEntity, BaseFilterableApiService, FilterCondition, FilterResult, RequestResult } from "@yusr_systems/core";
 import { castDraft } from "immer";
-import type IEntityState from "../interfaces/iEntityState";
-import type { BaseEntity, FilterCondition } from "@yusr_systems/core/src/entities";
-import type { FilterResult, RequestResult } from "@yusr_systems/core/src/types";
-import type { BaseFilterableApiService } from "@yusr_systems/core/src/networking";
+import type { IEntityState } from "../interfaces/iEntityState";
 
 type FilterMethodType<T> = (
   pageNumber: number,
@@ -13,7 +11,6 @@ type FilterMethodType<T> = (
 
 export function createGenericEntitySlice<
   T extends BaseEntity,
-  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   CR extends SliceCaseReducers<IEntityState<T>> = {}
 >(sliceName: string, service: BaseFilterableApiService<T>, filterMethod?: FilterMethodType<T>, customReducers?: CR)
 {

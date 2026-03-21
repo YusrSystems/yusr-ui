@@ -1,4 +1,4 @@
-import { TextAreaInput, type TextAreaInputProps } from "../input/textAreaInput";
+import { TextAreaInput, type TextAreaInputProps } from "../inputs/textAreaInput";
 import { FormField } from "./formField";
 
 export function TextAreaField(

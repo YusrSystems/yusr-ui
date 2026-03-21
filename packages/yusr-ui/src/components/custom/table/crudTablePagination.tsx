@@ -10,7 +10,7 @@ type PaginationFooterProps = {
   onPageChanged?: (newPage: number) => void;
 };
 
-export default function TablePagination({ pageSize, totalNumber, currentPage, onPageChanged }: PaginationFooterProps)
+export function CrudTablePagination({ pageSize, totalNumber, currentPage, onPageChanged }: PaginationFooterProps)
 {
   const totalPages = Math.ceil(totalNumber / pageSize);
 

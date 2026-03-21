@@ -5,7 +5,7 @@ import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTi
 type EmptyTableMode = "empty" | "loading" | "error";
 
 type EmptyTablePreviewProps = { mode: EmptyTableMode; };
-export default function EmptyTablePreview({ mode }: EmptyTablePreviewProps)
+export function CrudEmptyTablePreview({ mode }: EmptyTablePreviewProps)
 {
   if (mode === "loading")
   {

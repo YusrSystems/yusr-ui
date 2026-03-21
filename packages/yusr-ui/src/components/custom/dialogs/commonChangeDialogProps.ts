@@ -1,5 +1,5 @@
-import type { BaseEntity } from "@yusr_systems/core/src/entities";
-import type { BaseApiService } from "@yusr_systems/core/src/networking";
+import type { BaseEntity } from "@yusr_systems/core";
+import type { BaseApiService } from "@yusr_systems/core";
 import type { DialogMode } from "./dialogType";
 
 export type CommonChangeDialogProps<T extends BaseEntity> = {

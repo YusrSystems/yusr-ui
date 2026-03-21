@@ -1,6 +1,6 @@
-import type { FilterResult } from "@yusr_systems/core/src/types";
+import type { FilterResult } from "@yusr_systems/core";
 
-export default interface IEntityState<T>
+export interface IEntityState<T>
 {
   entities: FilterResult<T>;
   isLoaded: boolean;

@@ -1,4 +1,4 @@
-import { NumberInput, type NumberInputProps } from "../input/numberInput";
+import { NumberInput, type NumberInputProps } from "../inputs/numberInput";
 import { FormField } from "./formField";
 
 interface NumberFieldProps extends NumberInputProps

@@ -1,24 +1,24 @@
 import type { ActionCreatorWithPayload, AsyncThunk, UnknownAction } from "@reduxjs/toolkit";
+import type { ResourcePermissions } from "@yusr_systems/core";
+import type { BaseEntity, FilterCondition } from "@yusr_systems/core";
+import type { BaseApiService } from "@yusr_systems/core";
+import type { ColumnName, FilterResult } from "@yusr_systems/core";
 import type { PropsWithChildren } from "react";
 import { useEffect } from "react";
-import type { ResourcePermissions } from "@yusr_systems/core/src/auth/permissionSelector";
-import type { BaseEntity, FilterCondition } from "@yusr_systems/core/src/entities";
-import type { BaseApiService } from "@yusr_systems/core/src/networking";
-import type { ColumnName, FilterResult } from "@yusr_systems/core/src/types";
-import { useYusrDispatch } from "../../../state/hooks";
+import { useDispatch } from "react-redux";
 import type { IDialogState } from "../../../state/interfaces/iDialogState";
-import type IEntityState from "../../../state/interfaces/iEntityState";
+import type { IEntityState } from "../../../state/interfaces/iEntityState";
 import { Dialog, DialogContent } from "../../pure/dialog";
 import { TableBody } from "../../pure/table";
-import DeleteDialog from "../dialogs/deleteDialog";
-import SearchInput from "../input/searchInput";
-import EntityTable from "../table/entityTable";
-import TableBodyRow, { type TableBodyRowInfo } from "../table/tableBodyRow";
-import TableCard, { type CardProps } from "../table/tableCard";
-import TableHeader from "../table/tableHeader";
-import TableHeaderRows, { type TableHeadRow } from "../table/tableHeaderRows";
-import TablePagination from "../table/tablePagination";
-import TableRowActionsMenu from "../table/tableRowActionsMenu";
+import { DeleteDialog } from "../dialogs/deleteDialog";
+import { SearchInput } from "../inputs/searchInput";
+import { CrudTable } from "../table/crudTable";
+import { CrudTableBodyRow, type TableBodyRowInfo } from "../table/crudTableBodyRow";
+import { CrudTableCard, type CardProps } from "../table/crudTableCard";
+import { CrudTableHeader } from "../table/crudTableHeader";
+import { CrudTableHeaderRows, type CrudTableHeadRow } from "../table/crudTableHeaderRows";
+import { CrudTablePagination } from "../table/crudTablePagination";
+import { CrudTableRowActionsMenu } from "../table/crudTableRowActionsMenu";
 
 export interface CrudActions<T extends BaseEntity>
 {
@@ -42,13 +42,13 @@ export type CrudPageProps<T extends BaseEntity> = PropsWithChildren & {
   cards: CardProps[];
   columnsToFilter: ColumnName[];
   service: BaseApiService<T>;
-  tableHeadRows: TableHeadRow[];
+  tableHeadRows: CrudTableHeadRow[];
   tableRowMapper: (entity: T) => TableBodyRowInfo[];
 
   ChangeDialog: React.ReactNode;
 };
 
-export default function CrudPage<T extends BaseEntity>(
+export function CrudPage<T extends BaseEntity>(
   {
     permissions,
     useSlice,
@@ -67,38 +67,37 @@ export default function CrudPage<T extends BaseEntity>(
   }: CrudPageProps<T>
 )
 {
-  const dispatch = useYusrDispatch();
+  const dispatch = useDispatch();
   const { selectedRow, isChangeDialogOpen, isDeleteDialogOpen } = useSlice();
   useEffect(() =>
   {
-    dispatch(actions.filter(undefined));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    dispatch(actions.filter(undefined) as any);
   }, [dispatch, actions.filter]);
 
   return (
     <div className="px-5 py-3">
-      <TableHeader
+      <CrudTableHeader
         title={ title }
         buttonTitle={ addNewItemTitle }
         isButtonVisible={ permissions.addPermission }
         createComp={ ChangeDialog }
       />
 
-      <TableCard cards={ cards } />
+      <CrudTableCard cards={ cards } />
 
-      <SearchInput columnsNames={ columnsToFilter } onSearch={ (condition) => dispatch(actions.filter(condition)) } />
+      <SearchInput columnsNames={ columnsToFilter } onSearch={ (condition) => dispatch(actions.filter(condition) as any) } />
 
       <div className="rounded-b-xl border shadow-sm overflow-hidden">
-        <EntityTable state={ entityState }>
-          <TableHeaderRows tableHeadRows={ tableHeadRows } />
+        <CrudTable state={ entityState }>
+          <CrudTableHeaderRows tableHeadRows={ tableHeadRows } />
 
           <TableBody>
             { entityState.entities?.data?.map((entity: T, i: number) => (
-              <TableBodyRow
+              <CrudTableBodyRow
                 key={ i }
                 tableRows={ tableRowMapper(entity) }
                 dropdownMenu={ 
-                  <TableRowActionsMenu
+                  <CrudTableRowActionsMenu
                     permissions={ permissions }
                     type="dropdown"
                     onEditClicked={ () => dispatch(actions.openChangeDialog(entity)) }
@@ -106,7 +105,7 @@ export default function CrudPage<T extends BaseEntity>(
                   />
                  }
                 contextMenuContent={ 
-                  <TableRowActionsMenu
+                  <CrudTableRowActionsMenu
                     permissions={ permissions }
                     type="context"
                     onEditClicked={ () => dispatch(actions.openChangeDialog(entity)) }
@@ -116,9 +115,9 @@ export default function CrudPage<T extends BaseEntity>(
               />
             )) }
           </TableBody>
-        </EntityTable>
+        </CrudTable>
 
-        <TablePagination
+        <CrudTablePagination
           pageSize={ entityState.rowsPerPage }
           totalNumber={ entityState.entities?.count ?? 0 }
           currentPage={ entityState.currentPage || 1 }

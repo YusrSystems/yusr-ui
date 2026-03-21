@@ -14,7 +14,7 @@ export interface SidebarLogoProps {
   alt?: string;
 }
 
-export default function SidebarLogo({ logos, alt = "Logo" }: SidebarLogoProps)
+export function SidebarLogo({ logos, alt = "Logo" }: SidebarLogoProps)
 {
   const { state } = useSidebar();
   const isCollapsed = state === "collapsed";

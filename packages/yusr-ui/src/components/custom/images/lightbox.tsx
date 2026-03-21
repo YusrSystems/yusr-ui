@@ -9,7 +9,7 @@ interface LightboxProps
   onClose: () => void;
 }
 
-export default function Lightbox({ srcLight, srcDark, alt, onClose }: LightboxProps)
+export function Lightbox({ srcLight, srcDark, alt, onClose }: LightboxProps)
 {
   useEffect(() =>
   {

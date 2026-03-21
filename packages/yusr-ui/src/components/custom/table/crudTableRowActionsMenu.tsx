@@ -2,7 +2,7 @@ import { Button } from "../../pure/button";
 import { ContextMenuContent, ContextMenuGroup, ContextMenuItem, ContextMenuLabel, ContextMenuSeparator } from "../../pure/context-menu";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../../pure/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
-import type { ResourcePermissions } from "@yusr_systems/core/src/auth/permissionSelector";
+import type { ResourcePermissions } from "@yusr_systems/core";
 
 type ListType = "dropdown" | "context";
 
@@ -14,7 +14,7 @@ interface Props
   permissions: ResourcePermissions;
 }
 
-export default function TableRowActionsMenu({ onEditClicked, onDeleteClicked, type, permissions }: Props)
+export function CrudTableRowActionsMenu({ onEditClicked, onDeleteClicked, type, permissions }: Props)
 {
   return (
     <>
