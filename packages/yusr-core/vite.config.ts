@@ -20,6 +20,7 @@ export default defineConfig({
         'redux',
         'immer',
         'reselect',
+        'sonner',
       ],
       output: {
         format: 'es',

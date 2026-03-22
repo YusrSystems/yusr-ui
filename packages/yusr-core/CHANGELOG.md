@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 2.2.4
+
+### Patch Changes
+
+- fix sonner
+
 ## 2.2.3
 
 ### Patch Changes

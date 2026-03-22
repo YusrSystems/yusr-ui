@@ -1,5 +1,13 @@
 # @yusr_systems/ui
 
+## 2.2.4
+
+### Patch Changes
+
+- fix sonner
+- Updated dependencies
+  - @yusr_systems/core@2.2.4
+
 ## 2.2.3
 
 ### Patch Changes
