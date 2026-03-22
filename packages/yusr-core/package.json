@@ -1,18 +1,25 @@
 {
   "name": "@yusr_systems/core",
-  "version": "2.1.4",
+  "version": "2.2.3",
+  "private": false,
+  "type": "module",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
+  "main": "./dist/yusr-core.js",
+  "module": "./dist/yusr-core.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/yusr-core.js",
+      "default": "./dist/yusr-core.js"
+    }
+  },
   "files": [
     "dist"
   ],
-  "main": "./dist/yusr-core.umd.cjs",
-  "module": "./dist/yusr-core.js",
-  "types": "./dist/index.d.ts",
-  "private": false,
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
@@ -20,6 +27,7 @@
   },
   "devDependencies": {
     "typescript": "~5.9.3",
-    "vite": "^8.0.0"
+    "vite": "^8.0.0",
+    "vite-plugin-dts": "^4.0.0"
   }
 }

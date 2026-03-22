@@ -1,20 +1,30 @@
+import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
-import { resolve } from 'path'
 
 export default defineConfig({
-  plugins: [
-    dts({ rollupTypes: true }) 
-  ],
+  plugins: [dts({ rollupTypes: true })],
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'YusrCore',
-      fileName: 'yusr-core',
-      formats: ['es', 'umd']
+      formats: ['es'],
+      fileName: () => 'yusr-core.js',
     },
     rollupOptions: {
-      external: [], 
-    }
-  }
+      external: [
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        '@reduxjs/toolkit',
+        'redux',
+        'immer',
+        'reselect',
+      ],
+      output: {
+        format: 'es',
+        exports: 'named'
+      },
+    },
+  },
 })

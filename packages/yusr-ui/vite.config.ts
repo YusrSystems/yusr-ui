@@ -4,47 +4,56 @@ import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
 export default defineConfig({
-  plugins: [react(), 
+  plugins: [
+    react(),
     dts({
-      // Use the app config which actually includes the "src" folder
       tsconfigPath: resolve(__dirname, 'tsconfig.app.json'),
-      insertTypesEntry: true,
-      rollupTypes: true, // Let's try to bundle them for a cleaner package
-      copyDtsFiles: false,
-      staticImport: true,
-      // This is the "magic" fix:
-      compilerOptions: {
-        noEmit: false,
-        declaration: true,
-        emitDeclarationOnly: true,
-      },
-    })
+      rollupTypes: true,
+    }),
   ],
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'YusrUI',
-      fileName: 'yusr-ui',
+      formats: ['es'],
+      fileName: () => 'yusr-ui.js',
     },
     rollupOptions: {
       external: [
-        'react', 
-        'react-dom', 
-        '@yusr_systems/core',
+        'react',
+        'react-dom',
         'react/jsx-runtime',
-        'tailwindcss',
+        'react-router',
+        'react-router-dom',
+        'react-redux',
+        '@reduxjs/toolkit',
         'lucide-react',
-        /@radix-ui\/.*/, 
+        'sonner',
+        '@yusr_systems/core',
+        'class-variance-authority',
+        'clsx',
+        'tailwind-merge',
+        'date-fns',
+        'recharts',
+        'vaul',
+        'cmdk',
+        'next-themes',
+        'use-debounce',
+        'embla-carousel-react',
+        'embla-carousel',
+        'react-day-picker',
+        /^@radix-ui\/.*/,
+        /^@base-ui\/.*/,
       ],
       output: {
+        format: 'es',
+        exports: 'named',
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
           'react/jsx-runtime': 'jsxRuntime',
-          'lucide-react': 'LucideReact',
-          'tailwindcss': 'tailwindcss'
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 })
