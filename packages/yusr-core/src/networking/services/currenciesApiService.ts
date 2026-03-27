@@ -1,6 +1,6 @@
 import { ApiConstants, BaseFilterableApiService, Currency, FilterCondition, YusrApiHelper, type FilterResult, type RequestResult } from "@yusr_systems/core";
 
-export default class CurrenciesApiService extends BaseFilterableApiService<Currency>
+export class CurrenciesApiService extends BaseFilterableApiService<Currency>
 {
   routeName: string = "Currencies";
 

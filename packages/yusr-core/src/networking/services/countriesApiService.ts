@@ -1,6 +1,6 @@
 import { ApiConstants, BaseFilterableApiService, Country, FilterCondition, YusrApiHelper, type FilterResult, type RequestResult } from "@yusr_systems/core";
 
-export default class CountriesApiService extends BaseFilterableApiService<Country>
+export class CountriesApiService extends BaseFilterableApiService<Country>
 {
   routeName: string = "Countries";
 

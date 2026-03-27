@@ -1,5 +1,13 @@
 # @yusr_systems/ui
 
+## 2.2.8
+
+### Patch Changes
+
+- fix export
+- Updated dependencies
+  - @yusr_systems/core@2.2.8
+
 ## 2.2.7
 
 ### Patch Changes

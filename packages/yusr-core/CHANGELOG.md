@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 2.2.8
+
+### Patch Changes
+
+- fix export
+
 ## 2.2.7
 
 ### Patch Changes

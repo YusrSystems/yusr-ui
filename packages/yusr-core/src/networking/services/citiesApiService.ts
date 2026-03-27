@@ -1,6 +1,6 @@
 import { ApiConstants, BaseFilterableApiService, City, FilterCondition, YusrApiHelper, type FilterResult, type RequestResult } from "@yusr_systems/core";
 
-export default class CitiesApiService extends BaseFilterableApiService<City>
+export class CitiesApiService extends BaseFilterableApiService<City>
 {
   routeName: string = "Cities";
 
