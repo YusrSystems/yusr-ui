@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 2.2.5
+
+### Patch Changes
+
+- add common entities and services
+
 ## 2.2.4
 
 ### Patch Changes

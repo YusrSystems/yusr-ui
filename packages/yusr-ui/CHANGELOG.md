@@ -1,5 +1,13 @@
 # @yusr_systems/ui
 
+## 2.2.5
+
+### Patch Changes
+
+- add common entities and services
+- Updated dependencies
+  - @yusr_systems/core@2.2.5
+
 ## 2.2.4
 
 ### Patch Changes
