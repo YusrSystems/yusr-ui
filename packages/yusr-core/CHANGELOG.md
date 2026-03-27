@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 2.2.6
+
+### Patch Changes
+
+- export api services
+
 ## 2.2.5
 
 ### Patch Changes
