@@ -1,2 +1,2 @@
 export * from "./constants/apiConstants";
-export * from "./services/index";
+export * from "./services";
