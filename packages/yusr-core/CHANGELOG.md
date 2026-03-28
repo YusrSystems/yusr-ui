@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 2.2.9
+
+### Patch Changes
+
+- making theme provider to be next.js safe
+
 ## 2.2.8
 
 ### Patch Changes
