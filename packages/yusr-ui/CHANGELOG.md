@@ -1,5 +1,21 @@
 # @yusr_systems/ui
 
+## 2.2.10
+
+### Patch Changes
+
+- fixes
+- Updated dependencies
+  - @yusr_systems/core@2.2.10
+
+## 2.2.9
+
+### Patch Changes
+
+- making theme provider to be next.js safe
+- Updated dependencies
+  - @yusr_systems/core@2.2.9
+
 ## 2.2.8
 
 ### Patch Changes

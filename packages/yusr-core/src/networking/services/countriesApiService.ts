@@ -1,4 +1,8 @@
-import { ApiConstants, BaseFilterableApiService, Country, FilterCondition, YusrApiHelper, type FilterResult, type RequestResult } from "@yusr_systems/core";
+import type { Country, FilterCondition } from "../../entities";
+import type { FilterResult, RequestResult } from "../../types";
+import { ApiConstants } from "../constants/apiConstants";
+import { BaseFilterableApiService } from "./baseFilterableApiService";
+import { YusrApiHelper } from "./yusrApiHelper";
 
 export class CountriesApiService extends BaseFilterableApiService<Country>
 {

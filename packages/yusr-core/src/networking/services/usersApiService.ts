@@ -1,4 +1,5 @@
-import { BaseApiService, User } from "@yusr_systems/core";
+import type { User } from "../../entities";
+import { BaseApiService } from "./baseApiService";
 
 export class UsersApiService extends BaseApiService<User>
 {

@@ -7,7 +7,8 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build --workspaces"
+    "build": "npm run build -w @yusr_systems/core && npm run build -w @yusr_systems/ui",
+    "ci:publish": "npm run build && npx changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.30.0"
