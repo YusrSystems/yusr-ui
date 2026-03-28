@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 2.2.10
+
+### Patch Changes
+
+- fixes
+
 ## 2.2.9
 
 ### Patch Changes

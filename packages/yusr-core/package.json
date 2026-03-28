@@ -1,6 +1,6 @@
 {
   "name": "@yusr_systems/core",
-  "version": "2.2.9",
+  "version": "2.2.10",
   "private": false,
   "type": "module",
   "publishConfig": {

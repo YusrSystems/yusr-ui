@@ -1,5 +1,13 @@
 # @yusr_systems/ui
 
+## 2.2.10
+
+### Patch Changes
+
+- fixes
+- Updated dependencies
+  - @yusr_systems/core@2.2.10
+
 ## 2.2.9
 
 ### Patch Changes
