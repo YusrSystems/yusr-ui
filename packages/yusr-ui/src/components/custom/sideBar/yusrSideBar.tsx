@@ -123,7 +123,11 @@ YusrSideBar.Content = function ({
   );
 };
 
-YusrSideBar.Footer = function ({ loggedInUser }: { loggedInUser: any }) {
+YusrSideBar.Footer = function ({
+  loggedInUser = undefined,
+}: {
+  loggedInUser?: any;
+}) {
   return (
     <SidebarFooter>
       <SideBarUserData user={loggedInUser} />

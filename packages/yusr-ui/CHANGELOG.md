@@ -1,5 +1,11 @@
 # @yusr_systems/ui
 
+## 3.1.2
+
+### Patch Changes
+
+- add- default value to YusrSideBar.Footer in YusrSideBar component
+
 ## 3.1.1
 
 ### Patch Changes
