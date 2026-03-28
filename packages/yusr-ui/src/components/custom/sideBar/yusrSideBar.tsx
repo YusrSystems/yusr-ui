@@ -38,7 +38,7 @@ import { SideBarUserData } from "./sideBarUserData";
  * @param {YusrSidBarMainMenuProps["items"]} [navSecondary] The secondary navigation items for the sidebar.
  * @param {React.ReactNode} [children] The children of the sidebar component.
  */
-export default function YusrSideBar({
+export function YusrSideBar({
   LinkComponent = "a",
   logos,
   displayCompany = {

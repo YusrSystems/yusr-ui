@@ -1,5 +1,11 @@
 # @yusr_systems/ui
 
+## 3.1.1
+
+### Patch Changes
+
+- fix- yusrSideBar export type to not be default
+
 ## 3.1.0
 
 ### Minor Changes
