@@ -59,6 +59,7 @@ export * from "./sideBar/sideBarMainMenu";
 export * from "./sideBar/sideBarSecondaryMenu";
 export * from "./sideBar/sideBarUserData";
 export * from "./sideBar/yusrSideBarMainMenu";
+export * from "./sideBar/yusrSideBar";
 // Status
 export * from "./status/empty";
 export * from "./status/loading";

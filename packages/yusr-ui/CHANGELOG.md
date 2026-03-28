@@ -1,8 +1,14 @@
 # @yusr_systems/ui
 
-## 2.4.1
+## 3.1.0
 
-### Patch Changes
+### Minor Changes
+
+- add- yusr side bar compund component
+
+## 3.0.0
+
+### Major Changes
 
 - enhance scondary sidbar make it generic with Link attribute
 

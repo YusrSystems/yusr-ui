@@ -5,3 +5,4 @@ export * from "./useEntityForm";
 export * from "./useFormValidation";
 export * from "./useLightBox";
 export * from "./useStorageFile";
+export * from "./useSidebarContext";
