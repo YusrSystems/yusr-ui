@@ -2,7 +2,7 @@
 
 ## 2.4.1
 
-### Major Changes
+### Patch Changes
 
 - enhance scondary sidbar make it generic with Link attribute
 
