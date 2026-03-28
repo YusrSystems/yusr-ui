@@ -1,5 +1,17 @@
 # @yusr_systems/ui
 
+## 2.4.0
+
+### Minor Changes
+
+- add- yusr sidebar main menu
+
+## 2.3.0
+
+### Minor Changes
+
+- create a new component, YusrSidBarMainMenu, which is generic and next js safe
+
 ## 2.2.10
 
 ### Patch Changes
