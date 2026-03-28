@@ -1,4 +1,5 @@
-import { BaseApiService, Branch } from "@yusr_systems/core";
+import type { Branch } from "../../entities/branch";
+import { BaseApiService } from "./baseApiService";
 
 export class BranchesApiService extends BaseApiService<Branch>
 {

@@ -1,4 +1,5 @@
-import { BaseApiService, Role } from "@yusr_systems/core";
+import type { Role } from "../../entities";
+import { BaseApiService } from "./baseApiService";
 
 export class RolesApiService extends BaseApiService<Role>
 {

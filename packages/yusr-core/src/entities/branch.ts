@@ -1,4 +1,5 @@
-import { BaseEntity, type ColumnName } from "@yusr_systems/core";
+import type { ColumnName } from "../types";
+import { BaseEntity } from "./baseEntity";
 
 export class Branch extends BaseEntity
 {

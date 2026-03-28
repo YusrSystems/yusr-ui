@@ -1,4 +1,8 @@
-import { ApiConstants, BaseFilterableApiService, Currency, FilterCondition, YusrApiHelper, type FilterResult, type RequestResult } from "@yusr_systems/core";
+import type { Currency, FilterCondition } from "../../entities";
+import type { FilterResult, RequestResult } from "../../types";
+import { ApiConstants } from "../constants/apiConstants";
+import { BaseFilterableApiService } from "./baseFilterableApiService";
+import { YusrApiHelper } from "./yusrApiHelper";
 
 export class CurrenciesApiService extends BaseFilterableApiService<Currency>
 {

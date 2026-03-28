@@ -1,4 +1,4 @@
-import type { ColumnName } from "../types/ColumnName";
+import type { ColumnName } from "../types";
 import { BaseEntity } from "./baseEntity";
 import type { Country } from "./country";
 
