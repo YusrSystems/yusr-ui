@@ -1,5 +1,11 @@
 # @yusr_systems/ui
 
+## 2.4.1
+
+### Major Changes
+
+- enhance scondary sidbar make it generic with Link attribute
+
 ## 2.4.0
 
 ### Minor Changes
