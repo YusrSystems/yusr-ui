@@ -1,5 +1,11 @@
 # @yusr_systems/ui
 
+## 3.1.3
+
+### Patch Changes
+
+- seperate change dialog props into single file
+
 ## 3.1.2
 
 ### Patch Changes

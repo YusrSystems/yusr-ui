@@ -12,6 +12,7 @@ export * from "./containers/dynamicListContainer";
 
 // Dialogs
 export * from "./dialogs/changeDialog";
+export * from "./dialogs/changeDialogProps";
 export * from "./dialogs/commonChangeDialogProps";
 export * from "./dialogs/deleteDialog";
 export * from "./dialogs/dialogType";
