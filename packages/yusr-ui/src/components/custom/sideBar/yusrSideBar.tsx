@@ -20,6 +20,7 @@ import { SideBarCompanyData } from "./sideBarCompanyData";
 import { YusrSideBarMainMenu } from "./yusrSideBarMainMenu";
 import { SideBarSecondaryMenu } from "./sideBarSecondaryMenu";
 import { SideBarUserData } from "./sideBarUserData";
+import { TooltipProvider } from "@/components/pure";
 
 /**
  * A sidebar component for Yusuf UI.
@@ -51,15 +52,17 @@ export function YusrSideBar({
   ...props
 }: React.ComponentProps<typeof Sidebar> & YusrSidBarProps & PropsWithChildren) {
   return (
-    <SidebarContext.Provider
-      value={{ LinkComponent, logos, displayCompany, navMain, navSecondary }}
-    >
-      <SidebarProvider>
-        <Sidebar collapsible="icon" side="right" {...props}>
-          {children}
-        </Sidebar>
-      </SidebarProvider>
-    </SidebarContext.Provider>
+    <TooltipProvider>
+      <SidebarContext.Provider
+        value={{ LinkComponent, logos, displayCompany, navMain, navSecondary }}
+      >
+        <SidebarProvider>
+          <Sidebar collapsible="icon" side="right" {...props}>
+            {children}
+          </Sidebar>
+        </SidebarProvider>
+      </SidebarContext.Provider>
+    </TooltipProvider>
   );
 }
 

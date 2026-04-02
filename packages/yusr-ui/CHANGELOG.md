@@ -1,5 +1,11 @@
 # @yusr_systems/ui
 
+## 3.1.6
+
+### Patch Changes
+
+- add- tool tip provider for yusr sidebar so now it's independent component
+
 ## 3.1.5
 
 ### Patch Changes
