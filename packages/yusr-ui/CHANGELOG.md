@@ -1,5 +1,11 @@
 # @yusr_systems/ui
 
+## 3.1.5
+
+### Patch Changes
+
+- remove- react router dom so the ui package now is a generic ui pack
+
 ## 3.1.4
 
 ### Patch Changes
