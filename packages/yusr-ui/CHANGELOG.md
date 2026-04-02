@@ -1,5 +1,11 @@
 # @yusr_systems/ui
 
+## 3.1.4
+
+### Patch Changes
+
+- make sidebar main menue to NOT depend on react-router-dom to be generic component
+
 ## 3.1.3
 
 ### Patch Changes
