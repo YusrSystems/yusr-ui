@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 2.3.0
+
+### Minor Changes
+
+- enhance auth slice to be next js safe
+
 ## 2.2.10
 
 ### Patch Changes

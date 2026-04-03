@@ -7,27 +7,59 @@ export interface AuthState<TUser, TSetting> {
   setting: Partial<TSetting> | undefined;
 }
 
-const getInitialState = <TUser extends object, TSetting extends object>(): AuthState<TUser, TSetting> => {
-  const authStatus = localStorage.getItem(AuthConstants.AuthCheckStorageItemName) === "true";
-  const savedUser = localStorage.getItem(AuthConstants.LoggedInUserStorageItemName);
-  const savedSetting = localStorage.getItem(AuthConstants.SettingStorageItemName);
+const getStorageItem = (key: string) => {
+  if (typeof window === "undefined") return null;
+  return localStorage.getItem(key);
+};
+
+const getInitialState = <
+  TUser extends object,
+  TSetting extends object,
+>(): AuthState<TUser, TSetting> => {
+  // On the server, we MUST return a consistent default state to avoid hydration errors
+  if (typeof window === "undefined") {
+    return {
+      isAuthenticated: false,
+      loggedInUser: undefined,
+      setting: undefined,
+    };
+  }
+
+  // On the client, we can read from localStorage
+  const authStatus =
+    localStorage.getItem(AuthConstants.AuthCheckStorageItemName) === "true";
+  const savedUser = localStorage.getItem(
+    AuthConstants.LoggedInUserStorageItemName,
+  );
+  const savedSetting = localStorage.getItem(
+    AuthConstants.SettingStorageItemName,
+  );
 
   return {
     isAuthenticated: authStatus,
     loggedInUser: savedUser ? JSON.parse(savedUser) : undefined,
-    setting: savedSetting ? JSON.parse(savedSetting) : undefined
+    setting: savedSetting ? JSON.parse(savedSetting) : undefined,
   };
 };
 
 export type AuthReducers<TUser extends object, TSetting extends object> = {
-  login: (state: any, action: PayloadAction<{ user: TUser; setting: TSetting; } | undefined>) => void;
+  login: (
+    state: any,
+    action: PayloadAction<{ user: TUser; setting: TSetting } | undefined>,
+  ) => void;
   logout: (state: any) => void;
-  updateLoggedInUser: (state: any, action: PayloadAction<Partial<TUser>>) => void;
+  updateLoggedInUser: (
+    state: any,
+    action: PayloadAction<Partial<TUser>>,
+  ) => void;
   updateSetting: (state: any, action: PayloadAction<Partial<TSetting>>) => void;
   syncFromStorage: (state: any) => void;
 };
 
-export const createAuthSlice = <TUser extends object, TSetting extends object>(): Slice<
+export const createAuthSlice = <
+  TUser extends object,
+  TSetting extends object,
+>(): Slice<
   AuthState<TUser, TSetting>,
   AuthReducers<TUser, TSetting>,
   "auth"
@@ -36,16 +68,29 @@ export const createAuthSlice = <TUser extends object, TSetting extends object>()
     name: "auth",
     initialState: getInitialState<TUser, TSetting>(),
     reducers: {
-      login: (state, action: PayloadAction<{ user: TUser; setting: TSetting; } | undefined>) => {
+      login: (
+        state,
+        action: PayloadAction<{ user: TUser; setting: TSetting } | undefined>,
+      ) => {
         state.isAuthenticated = true;
-        localStorage.setItem(AuthConstants.AuthCheckStorageItemName, "true");
+
+        if (typeof window !== "undefined") {
+          localStorage.setItem(AuthConstants.AuthCheckStorageItemName, "true");
+          if (action.payload) {
+            localStorage.setItem(
+              AuthConstants.LoggedInUserStorageItemName,
+              JSON.stringify(action.payload.user),
+            );
+            localStorage.setItem(
+              AuthConstants.SettingStorageItemName,
+              JSON.stringify(action.payload.setting),
+            );
+          }
+        }
 
         if (action.payload) {
           state.loggedInUser = action.payload.user as any;
-          localStorage.setItem(AuthConstants.LoggedInUserStorageItemName, JSON.stringify(action.payload.user));
-
           state.setting = action.payload.setting as any;
-          localStorage.setItem(AuthConstants.SettingStorageItemName, JSON.stringify(action.payload.setting));
         }
       },
       logout: (state) => {
@@ -53,27 +98,52 @@ export const createAuthSlice = <TUser extends object, TSetting extends object>()
         state.loggedInUser = undefined as any;
         state.setting = undefined as any;
 
-        localStorage.removeItem(AuthConstants.AuthCheckStorageItemName);
-        localStorage.removeItem(AuthConstants.LoggedInUserStorageItemName);
-        localStorage.removeItem(AuthConstants.SettingStorageItemName);
+        if (typeof window !== "undefined") {
+          localStorage.removeItem(AuthConstants.AuthCheckStorageItemName);
+          localStorage.removeItem(AuthConstants.LoggedInUserStorageItemName);
+          localStorage.removeItem(AuthConstants.SettingStorageItemName);
+        }
       },
       updateLoggedInUser: (state, action: PayloadAction<Partial<TUser>>) => {
-        state.loggedInUser = { ...(state.loggedInUser as any), ...action.payload } as any;
-        localStorage.setItem(AuthConstants.LoggedInUserStorageItemName, JSON.stringify(state.loggedInUser));
+        state.loggedInUser = {
+          ...(state.loggedInUser as any),
+          ...action.payload,
+        } as any;
+        if (typeof window !== "undefined") {
+          localStorage.setItem(
+            AuthConstants.LoggedInUserStorageItemName,
+            JSON.stringify(state.loggedInUser),
+          );
+        }
       },
       updateSetting: (state, action: PayloadAction<Partial<TSetting>>) => {
         state.setting = { ...(state.setting as any), ...action.payload } as any;
-        localStorage.setItem(AuthConstants.SettingStorageItemName, JSON.stringify(state.setting));
+        if (typeof window !== "undefined") {
+          localStorage.setItem(
+            AuthConstants.SettingStorageItemName,
+            JSON.stringify(state.setting),
+          );
+        }
       },
       syncFromStorage: (state) => {
-        state.isAuthenticated = localStorage.getItem(AuthConstants.AuthCheckStorageItemName) === "true";
+        if (typeof window === "undefined") return;
 
-        const savedUser = localStorage.getItem(AuthConstants.LoggedInUserStorageItemName);
-        state.loggedInUser = savedUser ? JSON.parse(savedUser) : (undefined as any);
-
-        const savedSetting = localStorage.getItem(AuthConstants.SettingStorageItemName);
-        state.setting = savedSetting ? JSON.parse(savedSetting) : (undefined as any);
-      }
-    }
+        state.isAuthenticated =
+          localStorage.getItem(AuthConstants.AuthCheckStorageItemName) ===
+          "true";
+        const savedUser = localStorage.getItem(
+          AuthConstants.LoggedInUserStorageItemName,
+        );
+        state.loggedInUser = savedUser
+          ? JSON.parse(savedUser)
+          : (undefined as any);
+        const savedSetting = localStorage.getItem(
+          AuthConstants.SettingStorageItemName,
+        );
+        state.setting = savedSetting
+          ? JSON.parse(savedSetting)
+          : (undefined as any);
+      },
+    },
   }) as any;
 };
