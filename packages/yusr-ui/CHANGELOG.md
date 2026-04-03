@@ -1,5 +1,11 @@
 # @yusr_systems/ui
 
+## 5.0.2
+
+### Patch Changes
+
+- fix- infinity render from use entity form hook
+
 ## 5.0.1
 
 ### Patch Changes
