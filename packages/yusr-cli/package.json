@@ -2,6 +2,12 @@
   "name": "@yusr_systems/cli",
   "version": "2.0.0",
   "description": "CLI to initialize Yusr Systems environment",
+  "private": false,
+  "type": "module",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "main": "index.js",
   "bin": {
     "yusr-init": "./index.js"
