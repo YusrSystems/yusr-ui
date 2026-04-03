@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
-const { program } = require('commander');
-const execa = require('execa');
-const fs = require('fs-extra');
-const path = require('path');
-const chalk = require('chalk');
-const inquirer = require('inquirer');
+import { program } from 'commander';
+import { execa } from 'execa';
+import fs from 'fs-extra';
+import path from 'path';
+import chalk from 'chalk';
+import inquirer from 'inquirer';
+
 
 program
   .version('1.0.0')
