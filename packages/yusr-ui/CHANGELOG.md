@@ -1,5 +1,11 @@
 # @yusr_systems/ui
 
+## 5.0.1
+
+### Patch Changes
+
+- making auth listener Next safe
+
 ## 5.0.0
 
 ### Patch Changes
