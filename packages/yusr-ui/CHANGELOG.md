@@ -1,5 +1,13 @@
 # @yusr_systems/ui
 
+## 6.0.1
+
+### Patch Changes
+
+- fix localStorage is not defined issue
+- Updated dependencies
+  - @yusr_systems/core@6.0.1
+
 ## 5.0.2
 
 ### Patch Changes

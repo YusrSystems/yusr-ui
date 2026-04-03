@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 6.0.1
+
+### Patch Changes
+
+- fix localStorage is not defined issue
+
 ## 2.4.0
 
 ### Minor Changes

@@ -1,6 +1,5 @@
 import { createSlice, type PayloadAction, type Slice } from "@reduxjs/toolkit";
 import { AuthConstants } from "./authConstants";
-import { localStorageService } from "../services/local_storage_service";
 
 export interface AuthState<TUser, TSetting> {
   isAuthenticated: boolean;
@@ -8,26 +7,35 @@ export interface AuthState<TUser, TSetting> {
   setting: Partial<TSetting> | undefined;
 }
 
-const getInitialState = <
-  TUser extends object,
-  TSetting extends object,
->(): AuthState<TUser, TSetting> => {
-  const authStatus =
-    localStorageService.getItem<string>(
-      AuthConstants.AuthCheckStorageItemName,
-    ) === "true";
-  const savedUser = localStorageService.getItem<string>(
-    AuthConstants.LoggedInUserStorageItemName,
-  );
-  const savedSetting = localStorageService.getItem<string>(
-    AuthConstants.SettingStorageItemName,
-  );
+const safeStorage = {
+  getItem: (key: string) => {
+    if (typeof window === "undefined") return null;
+    return localStorage.getItem(key);
+  },
+  setItem: (key: string, value: string) => {
+    if (typeof window !== "undefined") localStorage.setItem(key, value);
+  },
+  removeItem: (key: string) => {
+    if (typeof window !== "undefined") localStorage.removeItem(key);
+  }
+};
 
-  return {
-    isAuthenticated: authStatus,
-    loggedInUser: savedUser ? JSON.parse(savedUser) : undefined,
-    setting: savedSetting ? JSON.parse(savedSetting) : undefined,
-  };
+const getInitialState = <TUser extends object, TSetting extends object>(): AuthState<TUser, TSetting> => {
+
+  const authStatus = safeStorage.getItem(AuthConstants.AuthCheckStorageItemName) === "true";
+  const savedUser = safeStorage.getItem(AuthConstants.LoggedInUserStorageItemName);
+  const savedSetting = safeStorage.getItem(AuthConstants.SettingStorageItemName);
+
+  try {
+    return {
+      isAuthenticated: authStatus,
+      loggedInUser: savedUser ? JSON.parse(savedUser) : undefined,
+      setting: savedSetting ? JSON.parse(savedSetting) : undefined,
+    };
+  } 
+  catch (e) {
+    return { isAuthenticated: false, loggedInUser: undefined, setting: undefined };
+  }
 };
 
 export type AuthReducers<TUser extends object, TSetting extends object> = {
@@ -61,23 +69,14 @@ export const createAuthSlice = <
         action: PayloadAction<{ user: TUser; setting: TSetting } | undefined>,
       ) => {
         state.isAuthenticated = true;
-        localStorageService.setItem(
-          AuthConstants.AuthCheckStorageItemName,
-          "true",
-        );
-
+        safeStorage.setItem(AuthConstants.AuthCheckStorageItemName, "true");
+        
         if (action.payload) {
           state.loggedInUser = action.payload.user as any;
-          localStorageService.setItem(
-            AuthConstants.LoggedInUserStorageItemName,
-            JSON.stringify(action.payload.user),
-          );
+          safeStorage.setItem(AuthConstants.LoggedInUserStorageItemName, JSON.stringify(action.payload.user));
 
           state.setting = action.payload.setting as any;
-          localStorageService.setItem(
-            AuthConstants.SettingStorageItemName,
-            JSON.stringify(action.payload.setting),
-          );
+          safeStorage.setItem(AuthConstants.SettingStorageItemName, JSON.stringify(action.payload.setting));
         }
       },
       logout: (state) => {
@@ -85,49 +84,27 @@ export const createAuthSlice = <
         state.loggedInUser = undefined as any;
         state.setting = undefined as any;
 
-        localStorageService.removeItem(AuthConstants.AuthCheckStorageItemName);
-        localStorageService.removeItem(
-          AuthConstants.LoggedInUserStorageItemName,
-        );
-        localStorageService.removeItem(AuthConstants.SettingStorageItemName);
+        safeStorage.removeItem(AuthConstants.AuthCheckStorageItemName);
+        safeStorage.removeItem(AuthConstants.LoggedInUserStorageItemName);
+        safeStorage.removeItem(AuthConstants.SettingStorageItemName);
       },
       updateLoggedInUser: (state, action: PayloadAction<Partial<TUser>>) => {
-        state.loggedInUser = {
-          ...(state.loggedInUser as any),
-          ...action.payload,
-        } as any;
-        localStorageService.setItem(
-          AuthConstants.LoggedInUserStorageItemName,
-          JSON.stringify(state.loggedInUser),
-        );
+        state.loggedInUser = { ...(state.loggedInUser as any), ...action.payload } as any;
+        safeStorage.setItem(AuthConstants.LoggedInUserStorageItemName, JSON.stringify(state.loggedInUser));
       },
       updateSetting: (state, action: PayloadAction<Partial<TSetting>>) => {
         state.setting = { ...(state.setting as any), ...action.payload } as any;
-        localStorageService.setItem(
-          AuthConstants.SettingStorageItemName,
-          JSON.stringify(state.setting),
-        );
+        safeStorage.setItem(AuthConstants.SettingStorageItemName, JSON.stringify(state.setting));
       },
       syncFromStorage: (state) => {
-        state.isAuthenticated =
-          localStorageService.getItem(
-            AuthConstants.AuthCheckStorageItemName,
-          ) === "true";
+        state.isAuthenticated = safeStorage.getItem(AuthConstants.AuthCheckStorageItemName) === "true";
 
-        const savedUser = localStorageService.getItem<string>(
-          AuthConstants.LoggedInUserStorageItemName,
-        );
-        state.loggedInUser = savedUser
-          ? JSON.parse(savedUser)
-          : (undefined as any);
+        const savedUser = safeStorage.getItem(AuthConstants.LoggedInUserStorageItemName);
+        state.loggedInUser = savedUser ? JSON.parse(savedUser) : (undefined as any);
 
-        const savedSetting = localStorageService.getItem<string>(
-          AuthConstants.SettingStorageItemName,
-        );
-        state.setting = savedSetting
-          ? JSON.parse(savedSetting)
-          : (undefined as any);
-      },
-    },
+        const savedSetting = safeStorage.getItem(AuthConstants.SettingStorageItemName);
+        state.setting = savedSetting ? JSON.parse(savedSetting) : (undefined as any);
+      }
+    }
   }) as any;
 };
