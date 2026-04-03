@@ -1,5 +1,11 @@
 # @yusr_systems/ui
 
+## 3.1.7
+
+### Patch Changes
+
+- update- documentation comment for YusrSideBar to include link to sidebar documentation
+
 ## 3.1.6
 
 ### Patch Changes

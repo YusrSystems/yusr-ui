@@ -38,6 +38,8 @@ import { TooltipProvider } from "@/components/pure";
  * @param {YusrSidBarMainMenuProps["items"]} [navMain] The main navigation items for the sidebar.
  * @param {YusrSidBarMainMenuProps["items"]} [navSecondary] The secondary navigation items for the sidebar.
  * @param {React.ReactNode} [children] The children of the sidebar component.
+ *
+ * for more details about, read the documentation [here](https://yusrsystems.github.io/yusr-ui-docs/docs/Templates/yusr-sidebar/)
  */
 export function YusrSideBar({
   LinkComponent = "a",
