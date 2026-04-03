@@ -1,5 +1,12 @@
 # @yusr_systems/ui
 
+## 5.0.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @yusr_systems/core@2.4.0
+
 ## 4.0.0
 
 ### Patch Changes

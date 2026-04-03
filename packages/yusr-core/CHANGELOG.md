@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 2.4.0
+
+### Minor Changes
+
+- inroduce- local storage service and use it on auth Slice to ensure next js safe
+
 ## 2.3.0
 
 ### Minor Changes
