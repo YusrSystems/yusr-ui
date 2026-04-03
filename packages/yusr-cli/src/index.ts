@@ -119,6 +119,7 @@ program
           "@yusr_systems/ui",
           "@yusr_systems/core",
           "--legacy-peer-deps",
+          "@fontsource/ibm-plex-sans-arabic",
         ],
         {
           cwd: finalDestination,
