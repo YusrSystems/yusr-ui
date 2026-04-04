@@ -1,5 +1,13 @@
 # @yusr_systems/ui
 
+## 6.0.4
+
+### Patch Changes
+
+- add the ability to change perm format
+- Updated dependencies
+  - @yusr_systems/core@6.0.4
+
 ## 6.0.3
 
 ### Patch Changes
