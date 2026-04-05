@@ -1,5 +1,17 @@
 # @yusr_systems/cli
 
+## 2.0.3
+
+### Patch Changes
+
+- enhance- sidebar and allow yusr side bar to collabsable
+
+## 2.0.2
+
+### Patch Changes
+
+- making sidebar collabsable
+
 ## 2.0.1
 
 ### Patch Changes
