@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 6.0.7
+
+### Patch Changes
+
+- add filter types
+
 ## 6.0.6
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @yusr_systems/cli
 
+## 2.0.4
+
+### Patch Changes
+
+- add filter types
+
 ## 2.0.3
 
 ### Patch Changes

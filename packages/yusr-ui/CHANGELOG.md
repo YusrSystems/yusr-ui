@@ -1,5 +1,13 @@
 # @yusr_systems/ui
 
+## 6.0.7
+
+### Patch Changes
+
+- add filter types
+- Updated dependencies
+  - @yusr_systems/core@6.0.7
+
 ## 6.0.6
 
 ### Patch Changes
