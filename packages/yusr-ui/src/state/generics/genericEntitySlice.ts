@@ -6,7 +6,8 @@ import type { IEntityState } from "../interfaces/iEntityState";
 type FilterMethodType<T> = (
   pageNumber: number,
   rowsPerPage: number,
-  condition?: FilterCondition | undefined
+  condition?: FilterCondition | undefined,
+  filterTypes?: number[]
 ) => Promise<RequestResult<FilterResult<T>>> | undefined;
 
 export function createGenericEntitySlice<
@@ -22,10 +23,30 @@ export function createGenericEntitySlice<
     rowsPerPage: 100
   };
 
+  const filter = createAsyncThunk(`${sliceName}/filter`, async (condition: FilterCondition | undefined, { getState }) =>
+  {
+    const state = (getState() as never)[sliceName] as IEntityState<T>;
+
+    let result;
+    if (filterMethod)
+    {
+      result = await filterMethod(state.currentPage, state.rowsPerPage, condition,  state.filterTypes);
+    }
+    else
+    {
+      result = await service.Filter(state.currentPage, state.rowsPerPage, condition);
+    }
+
+    return result?.data;
+  });
+
   const slice = createSlice({
     name: sliceName,
     initialState,
     reducers: {
+      setFilterTypes: (state, action: PayloadAction<number[]>) => {
+        state.filterTypes = action.payload;
+      },
       setCurrentPage: (state, action: PayloadAction<number>) =>
       {
         state.currentPage = action.payload;
@@ -77,28 +98,15 @@ export function createGenericEntitySlice<
     }
   });
 
-  const filter = createAsyncThunk(`${sliceName}/filter`, async (condition: FilterCondition | undefined, { getState }) =>
-  {
-    const state = (getState() as never)[sliceName] as IEntityState<T>;
-
-    let result;
-    if (filterMethod)
-    {
-      result = await filterMethod(state.currentPage, state.rowsPerPage, condition);
-    }
-    else
-    {
-      result = await service.Filter(state.currentPage, state.rowsPerPage, condition);
-    }
-
-    return result?.data;
-  });
-
   return {
     reducer: slice.reducer,
     actions: { ...slice.actions, filter } as
       & CaseReducerActions<
-        { setCurrentPage: typeof slice.caseReducers.setCurrentPage; refresh: typeof slice.caseReducers.refresh; } & CR,
+        { 
+          setCurrentPage: typeof slice.caseReducers.setCurrentPage;
+          setFilterTypes: typeof slice.caseReducers.setFilterTypes;
+          refresh: typeof slice.caseReducers.refresh; 
+        } & CR,
         string
       >
       & { filter: typeof filter; }

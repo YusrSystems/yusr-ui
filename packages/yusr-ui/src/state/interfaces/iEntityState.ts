@@ -7,4 +7,5 @@ export interface IEntityState<T>
   isLoading: boolean;
   currentPage: number;
   rowsPerPage: number;
+  filterTypes?: number[];
 }
