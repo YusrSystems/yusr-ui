@@ -1,5 +1,13 @@
 # @yusr_systems/ui
 
+## 6.0.5
+
+### Patch Changes
+
+- making sidebar collabsable
+- Updated dependencies
+  - @yusr_systems/core@6.0.5
+
 ## 6.0.4
 
 ### Patch Changes

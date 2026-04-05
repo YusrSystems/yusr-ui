@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 6.0.5
+
+### Patch Changes
+
+- making sidebar collabsable
+
 ## 6.0.4
 
 ### Patch Changes
