@@ -1,4 +1,4 @@
-import { ChevronRight } from "lucide-react";
+import { ChevronLeft } from "lucide-react"; // 1. Changed import to ChevronLeft
 import { Link } from "react-router-dom";
 import {
   SidebarGroup,
@@ -10,7 +10,6 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "../../pure/sidebar";
-// Make sure to import Collapsible from your UI library (usually Radix UI / Shadcn)
 import {
   Collapsible,
   CollapsibleContent,
@@ -35,16 +34,13 @@ export function SideBarMainMenu({ items }: { items: MainMenuItem[] }) {
       <SidebarGroupContent>
         <SidebarMenu>
           {items.map((item) => {
-            // 1. If parent has no auth, hide completely
             if (!item.hasAuth) return null;
 
-            // 2. If item has subItems, render as Collapsible Dropdown
             if (item.subItems && item.subItems.length > 0) {
               const authorizedSubItems = item.subItems.filter(
                 (sub) => sub.hasAuth,
               );
 
-              // Hide parent if all children are unauthorized
               if (authorizedSubItems.length === 0) return null;
 
               return (
@@ -68,8 +64,8 @@ export function SideBarMainMenu({ items }: { items: MainMenuItem[] }) {
                             {item.title}
                           </span>
                         </div>
-                        {/* Rotate arrow when open. Note: If you use RTL, you might want to adjust the rotation */}
-                        <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                        {/* 2. Changed to ChevronLeft, mr-auto, and -rotate-90 */}
+                        <ChevronLeft className="mr-auto transition-transform duration-200 group-data-[state=open]/collapsible:-rotate-90" />
                       </SidebarMenuButton>
                     </CollapsibleTrigger>
 
@@ -91,7 +87,6 @@ export function SideBarMainMenu({ items }: { items: MainMenuItem[] }) {
               );
             }
 
-            // 3. Render normal single item
             return (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild tooltip={item.title}>
