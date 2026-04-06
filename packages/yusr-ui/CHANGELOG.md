@@ -1,5 +1,13 @@
 # @yusr_systems/ui
 
+## 6.0.9
+
+### Patch Changes
+
+- add- optional divider between tabs in sidebar
+- Updated dependencies
+  - @yusr_systems/core@6.0.9
+
 ## 6.0.8
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @yusr_systems/cli
 
+## 2.0.6
+
+### Patch Changes
+
+- add- optional divider between tabs in sidebar
+
 ## 2.0.5
 
 ### Patch Changes
