@@ -1,5 +1,11 @@
 # @yusr_systems/cli
 
+## 2.0.5
+
+### Patch Changes
+
+- allow- date field to accept years, enhancing UX
+
 ## 2.0.4
 
 ### Patch Changes

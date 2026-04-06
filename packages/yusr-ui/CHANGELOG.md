@@ -1,5 +1,13 @@
 # @yusr_systems/ui
 
+## 6.0.8
+
+### Patch Changes
+
+- allow- date field to accept years, enhancing UX
+- Updated dependencies
+  - @yusr_systems/core@6.0.8
+
 ## 6.0.7
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 6.0.8
+
+### Patch Changes
+
+- allow- date field to accept years, enhancing UX
+
 ## 6.0.7
 
 ### Patch Changes
