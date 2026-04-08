@@ -1,7 +1,7 @@
-import { Card, CardContent, CardHeader, Checkbox, Label } from "@yusr_systems/ui";
 import { ShieldCheck } from "lucide-react";
+import { Card, CardContent, CardHeader, Checkbox, Label } from "../../../../dist";
 
-interface PermissionCardProps
+export interface PermissionCardProps
 {
   resourceId: string;
   label: string;

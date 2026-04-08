@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, Skeleton } from "@yusr_systems/ui";
+import { Card, CardContent, CardHeader, Skeleton } from "../../../../dist";
 
 export const PermissionSkeleton = () => (
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
