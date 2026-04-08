@@ -1,5 +1,17 @@
 # @yusr_systems/cli
 
+## 2.0.7
+
+### Patch Changes
+
+- b
+
+## 2.0.6
+
+### Patch Changes
+
+- b
+
 ## 2.0.5
 
 ### Patch Changes
