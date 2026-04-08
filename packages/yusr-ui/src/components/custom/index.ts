@@ -46,6 +46,10 @@ export * from "./inputs/textAreaInput";
 // Pages
 export * from "./pages/crudPage";
 
+// permissions
+export * from "./permissions/permissionCard";
+export * from "./permissions/permissionSkeleton";
+
 // Select
 export * from "./select/searchableSelect";
 
@@ -58,8 +62,8 @@ export * from "./sideBar/sidebarLogo";
 export * from "./sideBar/sideBarMainMenu";
 export * from "./sideBar/sideBarSecondaryMenu";
 export * from "./sideBar/sideBarUserData";
-export * from "./sideBar/yusrSideBarMainMenu";
 export * from "./sideBar/yusrSideBar";
+export * from "./sideBar/yusrSideBarMainMenu";
 // Status
 export * from "./status/empty";
 export * from "./status/loading";
@@ -77,3 +81,4 @@ export * from "./table/crudTableRowActionsMenu";
 // Theme
 export * from "./theme/themeProvider";
 export * from "./theme/themeToggle";
+

@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 6.0.11
+
+### Patch Changes
+
+- include the perms copms
+
 ## 6.0.10
 
 ### Patch Changes

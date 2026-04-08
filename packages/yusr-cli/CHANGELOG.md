@@ -1,5 +1,11 @@
 # @yusr_systems/cli
 
+## 2.0.8
+
+### Patch Changes
+
+- include the perms copms
+
 ## 2.0.7
 
 ### Patch Changes

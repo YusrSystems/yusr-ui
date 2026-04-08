@@ -1,5 +1,13 @@
 # @yusr_systems/ui
 
+## 6.0.11
+
+### Patch Changes
+
+- include the perms copms
+- Updated dependencies
+  - @yusr_systems/core@6.0.11
+
 ## 6.0.10
 
 ### Patch Changes
