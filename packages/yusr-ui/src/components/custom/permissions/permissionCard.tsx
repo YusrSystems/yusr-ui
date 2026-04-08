@@ -1,5 +1,5 @@
 import { ShieldCheck } from "lucide-react";
-import { Card, CardContent, CardHeader, Checkbox, Label } from "../../../../dist";
+import { Card, CardContent, CardHeader, Checkbox, Label } from "../../pure";
 
 export interface PermissionCardProps
 {
