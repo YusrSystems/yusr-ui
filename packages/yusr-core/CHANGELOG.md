@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 6.0.8
+
+### Patch Changes
+
+- add permissions comps
+
 ## 6.0.7
 
 ### Patch Changes
