@@ -1,5 +1,11 @@
 # @yusr_systems/cli
 
+## 2.0.10
+
+### Patch Changes
+
+- fix NumbertoWordsService name
+
 ## 2.0.9
 
 ### Patch Changes

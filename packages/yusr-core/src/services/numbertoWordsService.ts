@@ -1,12 +1,6 @@
 import type { Currency } from "../entities";
 
-export interface NumberToWordsOptions {
-  currency?: string;
-  fraction?: string;
-  feminine?: boolean;
-}
-
-export class TafqeetService 
+export class NumbertoWordsService 
 {
   private static masculineUnits: string[] = ['', 'واحد', 'اثنان', 'ثلاثة', 'أربعة', 'خمسة', 'ستة', 'سبعة', 'ثمانية', 'تسعة'];
   private static feminineUnits: string[] = ['', 'واحدة', 'اثنتان', 'ثلاث', 'أربع', 'خمس', 'ست', 'سبع', 'ثمان', 'تسع'];
