@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 6.0.12
+
+### Patch Changes
+
+- add numbertoWordsService
+
 ## 6.0.11
 
 ### Patch Changes
