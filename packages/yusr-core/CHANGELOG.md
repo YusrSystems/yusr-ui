@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 6.0.15
+
+### Patch Changes
+
+- fix FieldsSection
+
 ## 6.0.14
 
 ### Patch Changes

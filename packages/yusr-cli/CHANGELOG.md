@@ -1,5 +1,11 @@
 # @yusr_systems/cli
 
+## 2.0.12
+
+### Patch Changes
+
+- fix FieldsSection
+
 ## 2.0.11
 
 ### Patch Changes
