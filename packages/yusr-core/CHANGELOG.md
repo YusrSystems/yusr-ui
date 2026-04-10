@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 6.0.16
+
+### Patch Changes
+
+- add city prop to branch
+
 ## 6.0.15
 
 ### Patch Changes

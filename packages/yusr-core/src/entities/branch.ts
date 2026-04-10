@@ -1,11 +1,12 @@
 import type { ColumnName } from "../types";
 import { BaseEntity } from "./baseEntity";
+import type { City } from "./city";
 
 export class Branch extends BaseEntity
 {
   public name!: string;
   public cityId!: number;
-  public cityName!: string;
+  public city!: City;
   public street!: string;
   public district!: string;
   public buildingNumber!: string;

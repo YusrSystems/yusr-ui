@@ -1,5 +1,13 @@
 # @yusr_systems/ui
 
+## 6.0.16
+
+### Patch Changes
+
+- add city prop to branch
+- Updated dependencies
+  - @yusr_systems/core@6.0.16
+
 ## 6.0.15
 
 ### Patch Changes
