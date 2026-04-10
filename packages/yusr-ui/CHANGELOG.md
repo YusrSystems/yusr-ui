@@ -1,5 +1,13 @@
 # @yusr_systems/ui
 
+## 6.0.14
+
+### Patch Changes
+
+- fix FieldsSection
+- Updated dependencies
+  - @yusr_systems/core@6.0.14
+
 ## 6.0.13
 
 ### Patch Changes
