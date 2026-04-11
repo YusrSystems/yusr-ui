@@ -25,7 +25,19 @@ export function NumberInput({ onChange, min, max, isInvalid, className, ...props
           return;
         }
 
+        // Allow intermediate typing states: "-" or "-0" or "3."
+        if (rawValue === "-" || rawValue.endsWith("."))
+        {
+          return; // wait for more input, don't call onChange yet
+        }
+
         let val = Number(rawValue);
+
+        if (isNaN(val))
+        {
+          return;
+        }
+
         if (min !== undefined && val < Number(min))
         {
           val = Number(min);
