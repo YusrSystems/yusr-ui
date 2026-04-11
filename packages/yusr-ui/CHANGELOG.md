@@ -1,5 +1,13 @@
 # @yusr_systems/ui
 
+## 6.0.17
+
+### Patch Changes
+
+- fix NumberInput
+- Updated dependencies
+  - @yusr_systems/core@6.0.17
+
 ## 6.0.16
 
 ### Patch Changes

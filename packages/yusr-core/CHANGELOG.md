@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 6.0.17
+
+### Patch Changes
+
+- fix NumberInput
+
 ## 6.0.16
 
 ### Patch Changes
