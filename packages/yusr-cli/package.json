@@ -1,6 +1,6 @@
 {
   "name": "@yusr_systems/cli",
-  "version": "2.0.14",
+  "version": "2.0.15",
   "description": "CLI to initialize Yusr Systems environment",
   "private": false,
   "type": "module",

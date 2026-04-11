@@ -1,5 +1,11 @@
 # @yusr_systems/cli
 
+## 2.0.15
+
+### Patch Changes
+
+- fix NumberInput
+
 ## 2.0.14
 
 ### Patch Changes
