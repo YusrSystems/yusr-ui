@@ -14,7 +14,7 @@ type SearchableSelectParams<T> = {
   value: string;
   onValueChange: (value: string) => void;
   disabled?: boolean;
-  errorInputClass?: string;
+  isInvalid?: boolean;
   placeholder?: string;
   columnsNames: ColumnName[];
   onSearch: (condition: { value: string; columnName: string; } | undefined) => void;
@@ -28,7 +28,7 @@ export function SearchableSelect<T>(
     value,
     onValueChange,
     disabled,
-    errorInputClass,
+    isInvalid,
     placeholder = "اختر...",
     columnsNames,
     onSearch
@@ -53,7 +53,7 @@ export function SearchableSelect<T>(
           className={ cn(
             "w-full justify-between px-3 font-normal",
             !value && "text-muted-foreground",
-            errorInputClass
+            isInvalid? "error" : ""
           ) }
         >
           <span className="truncate text-start">{ selectedLabel }</span>

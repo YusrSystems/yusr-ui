@@ -127,3 +127,7 @@
 h1 {
   @apply text-2xl font-bold;
 }
+
+.error{
+  @apply border-red-600 dark:border-red-600 ring-red-600 text-red-600 placeholder:text-red-600;
+}
