@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
+import chalk from "chalk";
 import { program } from "commander";
 import execa from "execa";
 import fs from "fs-extra";
-import path from "path";
-import chalk from "chalk";
 import inquirer from "inquirer";
 import os from "os";
+import path from "path";
 import YusrDefaultCss from "./yusr_default_code/yusr_default_css";
 
 interface ProjectAnswers {
