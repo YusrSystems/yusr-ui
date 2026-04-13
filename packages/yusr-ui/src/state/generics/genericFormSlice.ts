@@ -16,12 +16,15 @@ export function createGenericFormSlice<T>(sliceName: string, defaultData: Partia
     initialState,
     reducers: {
       setInitialData(state, action: PayloadAction<Partial<T>>) {
-        state.data = action.payload as any;
-        state.errors = {};
+        Object.assign(state, { data: action.payload, errors: {} });
       },
-      updateFormData(state, action: PayloadAction<Partial<T>>) {
-        state.data = { ...state.data  as any, ...action.payload };
-        Object.keys(action.payload).forEach((key) => {
+      updateFormData(state, action: PayloadAction<Partial<T> | ((prev: Partial<T>) => Partial<T>)>) {
+        const updates =
+          typeof action.payload === "function"
+            ? action.payload(state.data as Partial<T>)
+            : action.payload;
+        Object.assign(state.data as Partial<T>, updates);
+        Object.keys(updates).forEach((key) => {
           delete state.errors[key];
         });
       },
@@ -32,8 +35,7 @@ export function createGenericFormSlice<T>(sliceName: string, defaultData: Partia
         delete state.errors[action.payload];
       },
       resetForm(state) {
-        state.data = defaultData  as any;
-        state.errors = {};
+        Object.assign(state, { data: defaultData, errors: {} });
       },
     },
   });
