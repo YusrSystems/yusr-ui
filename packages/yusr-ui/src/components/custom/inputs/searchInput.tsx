@@ -1,7 +1,7 @@
+import type { ColumnName } from "@yusr_systems/core";
 import { Search } from "lucide-react";
 import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
-import type { ColumnName } from "@yusr_systems/core";
 import { Input } from "../../pure/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../pure/select";
 
@@ -54,7 +54,7 @@ export function SearchInput({ columnsNames, onSearch }: SearchInputParams)
   };
 
   return (
-    <div className="p-3 rounded-t-xl border-x border-t flex flex-col sm:flex-row gap-4">
+    <div className="p-3 rounded-t-xl border-x border-t flex flex-col sm:flex-row gap-4 bg-muted z-0">
       <div className="relative w-full flex gap-2">
         { /* Shadcn Select for Columns */ }
         { columnsNames.length > 1 && (
@@ -71,13 +71,13 @@ export function SearchInput({ columnsNames, onSearch }: SearchInputParams)
         ) }
 
         { /* Search Icon & Input */ }
-        <div className="relative flex-1">
+        <div className="relative flex-1 z-10">
           <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             value={ searchValue }
             onChange={ handleInputChange }
             placeholder="ابحث..."
-            className="pr-10 bg-secondary border-none focus-visible:ring-1"
+            className="pr-10 bg-background border focus-visible:ring-1"
           />
         </div>
       </div>
