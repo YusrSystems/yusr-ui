@@ -1,5 +1,5 @@
 import type { BaseEntity } from "@yusr_systems/core";
-import type { PropsWithChildren } from "react";
+import type { PropsWithChildren, ReactNode } from "react";
 import { cn } from "../../../utils/cn";
 import { Button } from "../../pure/button";
 import { DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "../../pure/dialog";
@@ -11,6 +11,7 @@ export interface ChangeDialogProps<T extends BaseEntity> extends SaveButtonProps
   title: string;
   description?: string;
   className?: string;
+  actionButtons?: ReactNode;
 }
 
 export function ChangeDialog<T extends BaseEntity>(
@@ -18,6 +19,7 @@ export function ChangeDialog<T extends BaseEntity>(
     title,
     description = "",
     className = "sm:max-w-sm",
+    actionButtons,
     formData,
     dialogMode,
     service,
@@ -40,6 +42,7 @@ export function ChangeDialog<T extends BaseEntity>(
       { children }
 
       <DialogFooter>
+        {actionButtons}
         <DialogClose asChild>
           <Button variant="outline">إلغاء</Button>
         </DialogClose>

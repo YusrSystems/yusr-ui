@@ -1,4 +1,4 @@
-import { createSlice, type PayloadAction, type SliceCaseReducers, type ValidateSliceCaseReducers } from "@reduxjs/toolkit";
+import { createSlice, type ActionReducerMapBuilder, type PayloadAction, type SliceCaseReducers, type ValidateSliceCaseReducers } from "@reduxjs/toolkit";
 
 export interface FormState<T> {
   formData: Partial<T>;
@@ -9,6 +9,7 @@ export function createGenericFormSlice<T, Reducer extends SliceCaseReducers<Form
   sliceName: string, 
   defaultData: Partial<T> = {},
   reducers: ValidateSliceCaseReducers<FormState<T>, Reducer> = {} as ValidateSliceCaseReducers<FormState<T>, Reducer>, 
+  extraReducers?: (builder: ActionReducerMapBuilder<FormState<T>>) => void,
   ) 
 {
   const initialState: FormState<T> = {
@@ -44,5 +45,6 @@ export function createGenericFormSlice<T, Reducer extends SliceCaseReducers<Form
       },
       ...reducers
     },
+    extraReducers,
   });
 }
