@@ -1,11 +1,16 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction, type SliceCaseReducers, type ValidateSliceCaseReducers } from "@reduxjs/toolkit";
 
 export interface FormState<T> {
   formData: Partial<T>;
   errors: Record<string, string>;
 }
 
-export function createGenericFormSlice<T>(sliceName: string, defaultData: Partial<T> = {}) {
+export function createGenericFormSlice<T, Reducer extends SliceCaseReducers<FormState<T>> = SliceCaseReducers<FormState<T>>>(
+  sliceName: string, 
+  defaultData: Partial<T> = {},
+  reducers: ValidateSliceCaseReducers<FormState<T>, Reducer> = {} as ValidateSliceCaseReducers<FormState<T>, Reducer>, 
+  ) 
+{
   const initialState: FormState<T> = {
     formData: defaultData,
     errors: {},
@@ -37,6 +42,7 @@ export function createGenericFormSlice<T>(sliceName: string, defaultData: Partia
       resetForm(state) {
         Object.assign(state, { formData: defaultData, errors: {} });
       },
+      ...reducers
     },
   });
 }
