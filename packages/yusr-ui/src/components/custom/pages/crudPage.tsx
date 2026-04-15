@@ -16,6 +16,7 @@ import { CrudTableHeader } from "../table/crudTableHeader";
 import { CrudTableHeaderRows, type CrudTableHeadRow } from "../table/crudTableHeaderRows";
 import { CrudTablePagination } from "../table/crudTablePagination";
 import { CrudTableRowActionsMenu } from "../table/crudTableRowActionsMenu";
+import { UnauthorizedPage } from "../unauthorized/unauthorizedPage";
 
 export interface CrudActions<T extends BaseEntity>
 {
@@ -33,6 +34,7 @@ export type CrudPageProps<T extends BaseEntity> = PropsWithChildren & {
   useSlice: () => IDialogState<T>;
   actions: CrudActions<T>;
   permissions: ResourcePermissions;
+  hasPagePermission?: boolean;
   entityName: string;
   title: string;
   addNewItemTitle: string;
@@ -50,6 +52,7 @@ export type CrudPageProps<T extends BaseEntity> = PropsWithChildren & {
 export function CrudPage<T extends BaseEntity>(
   {
     permissions,
+    hasPagePermission = true,
     useSlice,
     entityName,
     title,
@@ -74,6 +77,9 @@ export function CrudPage<T extends BaseEntity>(
   {
     dispatch(actions.filter(undefined) as any);
   }, [dispatch, actions.filter]);
+
+  if (!hasPagePermission) 
+    return <UnauthorizedPage />;
 
   return (
     <div className="px-5 py-3">
