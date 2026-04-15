@@ -1,8 +1,5 @@
 import type { ActionCreatorWithPayload, AsyncThunk, UnknownAction } from "@reduxjs/toolkit";
-import type { ResourcePermissions } from "@yusr_systems/core";
-import type { BaseEntity, FilterCondition } from "@yusr_systems/core";
-import type { BaseApiService } from "@yusr_systems/core";
-import type { ColumnName, FilterResult } from "@yusr_systems/core";
+import type { BaseApiService, BaseEntity, ColumnName, FilterCondition, FilterResult, ResourcePermissions } from "@yusr_systems/core";
 import type { PropsWithChildren } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -46,6 +43,8 @@ export type CrudPageProps<T extends BaseEntity> = PropsWithChildren & {
   tableRowMapper: (entity: T) => TableBodyRowInfo[];
 
   ChangeDialog: React.ReactNode;
+  dorpdownItems?: (entity: T) => React.ReactNode[];
+  contextMenuItems?: (entity: T) => React.ReactNode[];
 };
 
 export function CrudPage<T extends BaseEntity>(
@@ -63,7 +62,9 @@ export function CrudPage<T extends BaseEntity>(
     tableHeadRows,
     tableRowMapper,
     ChangeDialog,
-    children
+    dorpdownItems,
+    contextMenuItems,
+    children,
   }: CrudPageProps<T>
 )
 {
@@ -102,6 +103,8 @@ export function CrudPage<T extends BaseEntity>(
                     type="dropdown"
                     onEditClicked={ () => dispatch(actions.openChangeDialog(entity)) }
                     onDeleteClicked={ () => dispatch(actions.openDeleteDialog(entity)) }
+                    dorpdownItems={dorpdownItems?.(entity)}
+                    contextMenuItems={contextMenuItems?.(entity)}
                   />
                  }
                 contextMenuContent={ 
@@ -110,6 +113,8 @@ export function CrudPage<T extends BaseEntity>(
                     type="context"
                     onEditClicked={ () => dispatch(actions.openChangeDialog(entity)) }
                     onDeleteClicked={ () => dispatch(actions.openDeleteDialog(entity)) }
+                    dorpdownItems={dorpdownItems?.(entity)}
+                    contextMenuItems={contextMenuItems?.(entity)}
                   />
                  }
               />

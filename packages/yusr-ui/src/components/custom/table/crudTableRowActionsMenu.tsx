@@ -1,8 +1,8 @@
+import type { ResourcePermissions } from "@yusr_systems/core";
+import { MoreHorizontal } from "lucide-react";
 import { Button } from "../../pure/button";
 import { ContextMenuContent, ContextMenuGroup, ContextMenuItem, ContextMenuLabel, ContextMenuSeparator } from "../../pure/context-menu";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../../pure/dropdown-menu";
-import { MoreHorizontal } from "lucide-react";
-import type { ResourcePermissions } from "@yusr_systems/core";
 
 type ListType = "dropdown" | "context";
 
@@ -12,9 +12,11 @@ interface Props
   onDeleteClicked: () => void;
   type: ListType;
   permissions: ResourcePermissions;
+  dorpdownItems?: React.ReactNode[];
+  contextMenuItems?: React.ReactNode[];
 }
 
-export function CrudTableRowActionsMenu({ onEditClicked, onDeleteClicked, type, permissions }: Props)
+export function CrudTableRowActionsMenu({ onEditClicked, onDeleteClicked, type, permissions, dorpdownItems, contextMenuItems }: Props)
 {
   return (
     <>
@@ -29,6 +31,7 @@ export function CrudTableRowActionsMenu({ onEditClicked, onDeleteClicked, type, 
             <DropdownMenuLabel>الإجراءات</DropdownMenuLabel>
             <DropdownMenuSeparator></DropdownMenuSeparator>
             { permissions.updatePermission && <DropdownMenuItem onSelect={ onEditClicked }>تعديل</DropdownMenuItem> }
+            {dorpdownItems}
             { permissions.deletePermission && (
               <DropdownMenuItem className="text-destructive" onSelect={ onDeleteClicked }>حذف</DropdownMenuItem>
             ) }
@@ -42,6 +45,7 @@ export function CrudTableRowActionsMenu({ onEditClicked, onDeleteClicked, type, 
             <ContextMenuLabel>الإجراءات</ContextMenuLabel>
             <ContextMenuSeparator></ContextMenuSeparator>
             { permissions.updatePermission && <ContextMenuItem onSelect={ onEditClicked }>تعديل</ContextMenuItem> }
+            {contextMenuItems}
             { permissions.deletePermission && (
               <ContextMenuItem className="text-destructive" onSelect={ onDeleteClicked }>حذف</ContextMenuItem>
             ) }

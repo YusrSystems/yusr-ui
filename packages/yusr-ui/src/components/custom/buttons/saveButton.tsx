@@ -1,7 +1,6 @@
+import type { BaseApiService, BaseEntity } from "@yusr_systems/core";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
-import type { BaseEntity } from "@yusr_systems/core";
-import type { BaseApiService } from "@yusr_systems/core";
 import { Button } from "../../pure/button";
 import type { DialogMode } from "../dialogs/dialogType";
 
@@ -13,10 +12,11 @@ export interface SaveButtonProps<T extends BaseEntity>
   disable?: () => boolean;
   onSuccess?: (newData: T) => void;
   validate?: () => boolean;
+  onBeforeSave?: () => Promise<{ handled: boolean; data?: T }>;
 }
 
 export function SaveButton<T extends BaseEntity>(
-  { formData, dialogMode, service, disable, onSuccess, validate = () => true }: SaveButtonProps<T>
+  { formData, dialogMode, service, disable, onSuccess, validate = () => true, onBeforeSave  }: SaveButtonProps<T>
 )
 {
   const [loading, setLoading] = useState(false);
@@ -26,6 +26,18 @@ export function SaveButton<T extends BaseEntity>(
     if (!validate())
     {
       return;
+    }
+
+    if (onBeforeSave)
+    {
+      setLoading(true);
+      const { handled, data } = await onBeforeSave();
+      setLoading(false);
+      if (handled)
+      {
+        if (data) onSuccess?.(data);
+        return;
+      }
     }
 
     if (!service)
