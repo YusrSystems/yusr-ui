@@ -75,7 +75,8 @@ export function CrudPage<T extends BaseEntity>(
   const { selectedRow, isChangeDialogOpen, isDeleteDialogOpen } = useSlice();
   useEffect(() =>
   {
-    dispatch(actions.filter(undefined) as any);
+    if(hasPagePermission)
+      dispatch(actions.filter(undefined) as any);
   }, [dispatch, actions.filter]);
 
   if (!hasPagePermission) 
