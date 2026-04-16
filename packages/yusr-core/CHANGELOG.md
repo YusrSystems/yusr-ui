@@ -1,5 +1,11 @@
 # @yusr_systems/core
 
+## 6.0.19
+
+### Patch Changes
+
+- add changes
+
 ## 6.0.18
 
 ### Patch Changes
