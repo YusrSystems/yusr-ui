@@ -1,4 +1,4 @@
-import type { ColumnName } from "@yusr_systems/core";
+import type { ColumnName, FilterCondition } from "@yusr_systems/core";
 import { Search } from "lucide-react";
 import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 
 type SearchInputParams = {
   columnsNames: ColumnName[];
-  onSearch: (condition: { value: string; columnName: string; } | undefined) => void;
+  onSearch: (condition: FilterCondition | undefined) => void;
 };
 
 export function SearchInput({ columnsNames, onSearch }: SearchInputParams)

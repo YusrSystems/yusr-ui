@@ -38,6 +38,8 @@ export type CrudPageProps<T extends BaseEntity> = PropsWithChildren & {
   entityName: string;
   title: string;
   addNewItemTitle: string;
+  onConditionChange?: (condition: FilterCondition | undefined) => void;
+  actionButtons?: React.ReactNode[];
   cards: CardProps[];
   columnsToFilter: ColumnName[];
   service: BaseApiService<T>;
@@ -57,6 +59,8 @@ export function CrudPage<T extends BaseEntity>(
     entityName,
     title,
     addNewItemTitle,
+    onConditionChange,
+    actionButtons = [],
     cards,
     columnsToFilter,
     actions,
@@ -88,12 +92,19 @@ export function CrudPage<T extends BaseEntity>(
         title={ title }
         buttonTitle={ addNewItemTitle }
         isButtonVisible={ permissions.addPermission }
+        actionButtons={ actionButtons }
         createComp={ ChangeDialog }
       />
 
       <CrudTableCard cards={ cards } />
 
-      <SearchInput columnsNames={ columnsToFilter } onSearch={ (condition) => dispatch(actions.filter(condition) as any) } />
+      <SearchInput 
+        columnsNames={ columnsToFilter } 
+        onSearch={ (condition) => {
+          onConditionChange?.(condition);
+          dispatch(actions.filter(condition) as any); 
+        }} 
+      />
 
       <div className="rounded-b-xl border shadow-sm overflow-hidden">
         <CrudTable state={ entityState }>

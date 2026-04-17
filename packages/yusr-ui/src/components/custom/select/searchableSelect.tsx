@@ -11,13 +11,14 @@ type SearchableSelectParams<T> = {
   items: T[];
   itemLabelKey: keyof T;
   itemValueKey: keyof T;
-  value: string;
-  onValueChange: (value: string) => void;
+  value: string | undefined;
+  onValueChange: (value: string | undefined) => void;
   disabled?: boolean;
   isInvalid?: boolean;
   placeholder?: string;
   columnsNames: ColumnName[];
   onSearch: (condition: { value: string; columnName: string; } | undefined) => void;
+  showAllOption?: boolean;
 };
 
 export function SearchableSelect<T>(
@@ -31,7 +32,8 @@ export function SearchableSelect<T>(
     isInvalid,
     placeholder = "اختر...",
     columnsNames,
-    onSearch
+    onSearch,
+    showAllOption = true
   }: SearchableSelectParams<T>
 )
 {
@@ -78,6 +80,26 @@ export function SearchableSelect<T>(
               ? <CommandEmpty className="py-6 text-center text-sm text-muted-foreground">لا توجد بيانات</CommandEmpty>
               : (
                 <CommandGroup>
+
+                {showAllOption && (
+                  <CommandItem
+                    value="all-items-option"
+                    onSelect={() => {
+                      onValueChange(undefined);
+                      setOpen(false);
+                    }}
+                    className="cursor-pointer"
+                  >
+                    <Check
+                      className={cn(
+                        "h-4 w-4 ltr:mr-2 rtl:ml-2",
+                        (value === undefined || value === "") ? "opacity-100" : "opacity-0"
+                      )}
+                    />
+                    الكل
+                  </CommandItem>
+                )}
+
                   { items.map((item) =>
                   {
                     const itemValue = String(item[itemValueKey]);
